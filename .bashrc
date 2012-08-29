@@ -20,6 +20,10 @@ if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
 fi
 
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+. `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
 # ANSI color codes
 # Reset
 Color_Off='\e[0m' # Text Reset
