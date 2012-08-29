@@ -110,10 +110,8 @@ prompt_pwd() {
 gitprompt='$(__git_ps1 "(%s)")'
 export PS1="\[$BIBlack\]\$(prompt_pwd) \u@\h \[$BIRed\]$gitprompt\[$Green\]\[$Color_Off\] "
 
-source /Users/kosta/src/misc/git-completion.bash
-
-if [ -f /usr/local/Cellar/drush/5.6/libexec/examples/example.bashrc ] ; then
-    . /usr/local/Cellar/drush/5.6/libexec/examples/example.bashrc
+if [ -f /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc ] ; then
+    . /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
