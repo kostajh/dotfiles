@@ -13,7 +13,7 @@ alias mvim="~/src/vim/macvim/src/MacVim/mvim"
 alias drupalcs='phpcs --standard=DrupalCodingStandard'
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-
+alias todo="subl ~/Dropbox/Apps/Byword/todo.md"
 export EDITOR=/usr/bin/vim
 
 if [ -f /etc/bash_completion ]; then
