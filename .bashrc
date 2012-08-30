@@ -20,6 +20,10 @@ if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
 fi
 
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+. `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
 # ANSI color codes
 # Reset
 Color_Off='\e[0m' # Text Reset
@@ -106,10 +110,8 @@ prompt_pwd() {
 gitprompt='$(__git_ps1 "(%s)")'
 export PS1="\[$BIBlack\]\$(prompt_pwd) \u@\h \[$BIRed\]$gitprompt\[$Green\]\[$Color_Off\] "
 
-source /Users/kosta/src/misc/git-completion.bash
-
-if [ -f /usr/local/Cellar/drush/5.6/libexec/examples/example.bashrc ] ; then
-    . /usr/local/Cellar/drush/5.6/libexec/examples/example.bashrc
+if [ -f /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc ] ; then
+    . /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
