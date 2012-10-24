@@ -5,7 +5,6 @@ export PATH=$PATH:/Users/kosta/.gem/ruby/1.8/bin
 export PATH=$PATH:/Users/kosta/.gem/bin
 export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
 export PATH=$PATH:"/Users/kosta/src/github/git-diff-grep"
-export PATH=$PATH:/Users/kosta/drush
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/opt/local/bin
 export GEM_HOME="/Users/kosta/.gem"
 export GEM_PATH="/Users/kosta/.gem"
@@ -15,9 +14,12 @@ export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 alias todo="subl ~/Dropbox/Apps/Byword/todo.md"
 export EDITOR=/usr/bin/vim
-
+export PATH="$PATH:/Users/kosta/src/drupal/drush:/usr/local/bin"
 if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
+fi
+if [ -f /etc/bash_completion.d/task.sh ]; then
+ . /etc/bash_completion.d/task.sh
 fi
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
@@ -113,6 +115,11 @@ export PS1="\[$BIBlack\]\$(prompt_pwd) \u@\h \[$BIRed\]$gitprompt\[$Green\]\[$Co
 if [ -f /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc ] ; then
     . /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc
 fi
+
+# TaskWarrior aliases
+alias t="task list"
+alias ta="task add"
+alias tc="task calendar"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
