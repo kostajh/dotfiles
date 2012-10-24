@@ -16,9 +16,12 @@ export CLICOLOR=1
 alias todo="subl ~/Dropbox/Apps/Byword/todo.md"
 alias selenium="java -jar ~/src/selenium/selenium-server-standalone-2.25.0.jar"
 export EDITOR=/usr/bin/vim
-
+export PATH="$PATH:/Users/kosta/src/drupal/drush:/usr/local/bin"
 if [ -f /etc/bash_completion ]; then
  . /etc/bash_completion
+fi
+if [ -f /etc/bash_completion.d/task.sh ]; then
+ . /etc/bash_completion.d/task.sh
 fi
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
@@ -114,6 +117,11 @@ export PS1="\[$BIBlack\]\$(prompt_pwd) \u@\h \[$BIRed\]$gitprompt\[$Green\]\[$Co
 if [ -f /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc ] ; then
     . /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc
 fi
+
+# TaskWarrior aliases
+alias t="task list"
+alias ta="task add"
+alias tc="task calendar"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
