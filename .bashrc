@@ -1,19 +1,20 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/kosta/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-export PATH=$PATH:/Users/kosta/.gem/ruby/1.8/bin
-export PATH=$PATH:/Users/kosta/.gem/bin
+export PATH="$PATH:/Users/kosta/.gem/bin:/usr/local/bin"
 export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
 export PATH=$PATH:"/Users/kosta/src/github/git-diff-grep"
-export PATH=$PATH:/Users/kosta/drush
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/opt/local/bin
+export PATH="$PATH:/Users/kosta/src/drupal/drush:/usr/local/bin"
+export PATH="$PATH:/usr/local/Cellar/php53/5.3.14/bin"
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/opt/local/bin:/usr/local/Cellar/php53/5.3.14/bin
 export GEM_HOME="/Users/kosta/.gem"
 export GEM_PATH="/Users/kosta/.gem"
 alias mvim="~/src/vim/macvim/src/MacVim/mvim"
-alias drupalcs='phpcs --standard=DrupalCodingStandard'
+alias drupalcs='phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme'
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 alias todo="subl ~/Dropbox/Apps/Byword/todo.md"
+alias selenium="java -jar ~/src/selenium/selenium-server-standalone-2.25.0.jar"
 export EDITOR=/usr/bin/vim
 
 if [ -f /etc/bash_completion ]; then
