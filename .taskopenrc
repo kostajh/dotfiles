@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#BROWSER='xdg-open'
-#EDITOR='vim'
-TASKBIN='/usr/bin/task'
+BROWSER='open'
+EDITOR='vim'
+TASKBIN='/usr/local/bin/task'
 
 # If you sync tasks FOLDER should be a location that syncs and is available to
 # other computers, i.e. /users/dropbox/tasknotes
