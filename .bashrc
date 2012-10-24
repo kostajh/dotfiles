@@ -119,7 +119,8 @@ if [ -f /usr/local/Cellar/drush/5.7/libexec/examples/example.bashrc ] ; then
 fi
 
 # TaskWarrior aliases
-alias t="task list"
+alias t="task"
+alias tl="task list"
 alias ta="task add"
 alias tc="task calendar"
 
