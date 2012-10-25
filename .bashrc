@@ -123,6 +123,7 @@ alias t="task"
 alias tl="task list"
 alias ta="task add"
 alias tc="task calendar"
+alias to="taskopen"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
