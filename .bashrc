@@ -13,7 +13,7 @@ alias mvim="~/src/vim/macvim/src/MacVim/mvim"
 alias drupalcs='phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme'
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-alias todo="subl ~/Dropbox/Apps/Byword/todo.md"
+alias todo="task minimal"
 alias selenium="java -jar ~/src/selenium/selenium-server-standalone-2.25.0.jar"
 export EDITOR=/usr/bin/vim
 export PATH="$PATH:/Users/kosta/src/drupal/drush:/usr/local/bin"
