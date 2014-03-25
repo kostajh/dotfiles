@@ -30,6 +30,11 @@ fi
 # Eclimd
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
 
+# Vim
+alias vim='gvim -v'
+
+export EDITOR='gvim -v'
+
 # Task aliases
 alias ta="task add logged:false"
 alias ta-email="task add 'AC/Email' logged:false +today +work ac:96 proj:dh-overhead +next"
