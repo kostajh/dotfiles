@@ -83,6 +83,10 @@ alias mkdir='mkdir -p -v'
 # export LESSOPEN="| /usr/bin/source-highlight %s"
 export LESS='-R '
 
+# Mutt
+alias mutt='mutt -F /home/kosta/.mutt/mayfirst'
+alias mutt-work='mutt -F /home/kosta/.mutt/work'
+
 # taskd
 export TASKDDATA=/home/kosta/taskd
 # alias pstorm="nohup /bin/bash /home/kosta/PHPStorm/bin/phpstorm.sh &"
