@@ -1,6 +1,6 @@
 #!/bin/bash
 
 notmuch new
-notmuch tag +work to:kosta@designhammer.com tag:inbox
-notmuch tag +mayfirst to:kosta@harlan.mayfirst.org tag:inbox
+notmuch tag +gmail +mayfirst -- to:kostajh@gmail.com
+notmuch tag +mayfirst -- to:kosta@harlan.mayfirst.org
 exit 0

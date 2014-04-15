@@ -15,14 +15,17 @@ set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/sig           # my signature file# ACCOUNT1
 
 # notmuch bindings
-#macro index \\\\ "<vfolder-from-query>"              # looks up a hand made query
-#macro index A "<modify-labels>+archive -unread -inbox\\n"        # tag as Archived
-#macro index I "<modify-labels>-inbox -unread\\n"                 # removed from inbox
-#macro index S "<modify-labels-then-hide>-inbox -unread +junk\\n" # tag as Junk mail
-#macro index + "<modify-labels>+*\\n<sync-mailbox>"               # tag as starred
-#macro index - "<modify-labels>-*\\n<sync-mailbox>"               # tag as unstarred
+macro index \\\\ "<vfolder-from-query>"              # looks up a hand made query
+macro index A "<modify-labels>+archive -unread -inbox\\n"        # tag as Archived
+macro index I "<modify-labels>-inbox -unread\\n"                 # removed from inbox
+macro index S "<modify-labels-then-hide>-inbox -unread +junk\\n" # tag as Junk mail
+macro index + "<modify-labels>+*\\n<sync-mailbox>"               # tag as starred
+macro index - "<modify-labels>-*\\n<sync-mailbox>"               # tag as unstarred
 macro index / "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
         "search mail (using notmuch)"
+
+# Vim
+#set editor="vim -c 'set spell spelllang=en' -c 'setlocal fo+=aw'"
 
 # Basic Options --------------------------------------
 set wait_key = no        # shut up, mutt
@@ -59,6 +62,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
 set index_format = "[%Z]  %D  %-20.20F  %s"
+set index_format="%4C %Z %?GI?%GI& ? %[%d/%b]  %-16.15F %?M?(%3M)&     ? %s %> %?g?%g?"
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
 set uncollapse_jump                        # don't collapse on an unread

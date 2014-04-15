@@ -51,12 +51,13 @@ alias ta-staff-meeting="task add Staff meeting logged:false ac:44 proj:dh-operat
 source /etc/bash_completion.d/git
 source /usr/share/git-core/contrib/completion/git-prompt.sh
 if [ "\$(type -t __git_ps1)" ] && [ "\$(type -t __drush_ps1)" ]; then
-  PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\n $(__git_ps1 " (%s)")$(__drush_ps1 "[%s]") $(__task_ps1 "{%s}")\n\$\[\e[m\] \[\e[0;37m\]'
+  PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\n $(__git_ps1 " (%s)")$(__drush_ps1 "[%s]") $\[\e[m\] \[\e[0;37m\]'
 fi
 
 alias clipboard='bash /home/kosta/src/clipboard.sh'
 export TASKDDATA=/home/kosta/.taskd
 export NODE_PATH='/usr/lib/node_modules'
+export GOPATH=/home/kosta/gocode
 alias ngrok=$HOME/src/ngrok
 
 # JRE
