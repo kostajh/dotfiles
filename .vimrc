@@ -1,134 +1,326 @@
-" Set terminal colors to 256
-set t_Co=256
-
-" Pathogen settings
-" source ~/src/vim/vim-pathogen/autoload/pathogen.vim
-call pathogen#helptags()
-" call pathogen#infect('~/src/vim')
-call pathogen#runtime_append_all_bundles()
-
-" Defaults
-syntax on
-filetype plugin indent on
-set nocompatible
+set nocompatible               " be iMproved
 filetype off
-autocmd!
-set showmatch
-set ruler
-set hlsearch
-set shell=/bin/bash
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-" Default indentation
-set tabstop=4
-set shiftwidth=4
+" Vundle Bundles
+Bundle 'gmarik/vundle'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'file:///home/kosta/src/drupal/drupal.vim'
+Bundle 'jaxbot/github-issues.vim'
+Bundle 'gcmt/wildfire.vim'
+Bundle 'vimwiki/vimwiki'
+Bundle 'bling/vim-bufferline'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'chriskempson/base16-vim'
+Bundle 'reinh/vim-makegreen'
+Bundle 'lambdalisue/nose.vim'
+Bundle 'ervandew/supertab'
+Bundle 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'myusuf3/numbers.vim'
+Bundle "guyzmo/notmuch-abook"
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
+Bundle 'amix/vim-zenroom2'
+Bundle 'junegunn/goyo.vim'
+"Bundle 'm2mdas/phpcomplete-extended'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'dsawardekar/ember.vim'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Rykka/riv.vim'
+Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'scratch.vim'
+Bundle 'tpope/vim-dispatch'
+"Bundle 'nelstrom/vim-markdown-folding'
+Bundle 'stephpy/vim-phpdoc'
+Bundle 'nginx.vim'
+Bundle 'arnaud-lb/vim-php-namespace'
+Bundle 'mklabs/grunt.vim'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'jamessan/vim-gnupg'
+"Bundle 'suan/vim-instant-markdown'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-liquid'
+Bundle 'xolox/vim-misc'
+Bundle 'Raimondi/delimitMate'
+Bundle 'StanAngeloff/php.vim'
+Bundle 'othree/html5.vim'
+Bundle 'arnaud-lb/vim-php-namespace'
+"Bundle 'xolox/vim-easytags'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-sensible'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'garbas/vim-snipmate'
+Bundle 'Shougo/vimfiler.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'honza/vim-snippets'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-surround'
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-git'
+Bundle 'sjl/gundo.vim'
+Bundle 'fs111/pydoc.vim'
+Bundle 'vim-scripts/TaskList.vim'
+Bundle 'rstacruz/sparkup'
+"Bundle 'airblade/vim-gitgutter'
+Bundle 'mhinz/vim-signify'
+"Bundle 'techlivezheng/vim-plugin-tagbar-phpctags'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
+Bundle 'xolox/vim-notes'
+Bundle 'chrisbra/csv.vim'
+Bundle 'scratch'
+Bundle 'joonty/vdebug'
+Bundle 'ntpeters/vim-better-whitespace'
+
+filetype plugin indent on
+syntax on
+
+" Eclim
+"inoremap <Down> <buffer> :PhpSearchContext<CR>
+"nnoremap <silent> <buffer> <F12> :PhpSearchContext<CR>
+let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimPhpValidate = 0
+let g:EclimFileTypeValidate = 0
+let g:EclimPhpDrupalValidate = 0
+let g:EclimShowCurrentError = 0
+let g:airline#extensions#eclim#enabled = 1
+" Hide signs
+let g:EclimShowQuickfixSigns = 0
+let g:EclimShowLoclistSigns = 0
+let g:EclimQuickfixSignText = 0
+let g:EclimLoclistSignText = 0
+let g:EclimUserSignText = 0
+let g:EclimUserSignHighlight = 0
+let g:EclimSignLevel = 0
+
+" YouCompleteMe
+"let g:ycm_add_preview_to_completeopt = 1
+
+" Goyo
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'goyo', 'vim-zenroom2']
+
+" Supertab
+let g:SuperTabDefaultCompletionType = 'context'
+
+" Vim filer
+let g:vimfiler_as_default_explorer = 1
+
+" Quick edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+"PHPComplete
+let g:phpcomplete_parse_docblock_comments = 1
+
+"Utilsnips
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '/run/media/kosta/data/Dropbox/vimwiki'}]
+
+" Fullscreen mode
+map <silent> <F11>
+\    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+
+" DelimitMate
+let g:delimitMate_expand_cr = 1
+
+" Markdown
+autocmd Filetype markdown setlocal wrap
+autocmd Filetype markdown setlocal linebreak
+autocmd Filetype markdown setlocal nolist
+autocmd Filetype markdown setlocal columns=80
+
+"HTML
+:iabbrev </ </<C-X><C-O>
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Vimroom
+nnoremap <silent> <Leader>mz <Plug>VimroomToggle
+
+" CSV
+let g:csv_autocmd_arrange = 1
+aug CSV_Editing
+  au!
+  au BufRead,BufWritePost *.csv :%ArrangeColumn
+  au BufWritePre *.csv :%UnArrangeColumn
+aug end
+
+" GitGutter
+let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 0
+
+" No undo files
+set noundofile
+
+" XML formatting
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+" RST
+command! RstPreview :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+nnoremap <C-p><C-r> :RstPreview<CR>
+
+" CtrlPBuffer
+nnoremap <C-p><C-y> :CtrlPBufTag<CR>
+nnoremap <C-p><C-p> :CtrlPTag<CR>
+
+" Always edit in utf-8:
+set encoding=utf-8
+
+" Enforce consistent line endings: if 'ff' is set to "unix" and there are any
+" stray '\r' characters at ends of lines, then automatically remove them. See
+" $VIMRUNTIME/indent/php.vim .
+let PHP_removeCRwhenUnix = 1
+
+" Shortcut syntax enable
+map <leader>se :syntax enable<CR>
+
+" Easytags
+let g:easytags_python_enabled = 1
+let g:easytags_php_enabled = 1
+
+" BuffergatorToggle
+"nnoremap <leader>b :BuffergatorToggle<CR>
+
+" No vim backups
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Tagbar
+let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width=40
+map <leader>y :TagbarToggle<CR>
+
+" Set PHP executable
+let s:php_executable='/usr/bin/php'
+
+" Highlight editing line
+hi LineNr guifg=#3D3D3D guibg=black gui=NONE ctermfg=darkgray ctermbg=black cterm=NONE
+
+" Drupal hooks
+iabbr Hook <C-R>=HookFunc()<CR>
+
+" HookFunc(): Drupal helper function
+function! HookFunc()
+  let f = strpart(expand("%:t"), 0, stridx(expand("%:t"), '.', 0))
+
+  " wtf?
+  let a = input("")
+
+  let h = input("Which hook? ")
+
+  return "/**\<CR>Implements hook_" . h . "()\<CR>/\<CR>" . "function " . f . "_" . h . "() {\<CR>}\<ESC>k%i"
+endfunction
+
+" Behat
+let feature_filetype='behat'
+
+" Drupal plugin
+let g:Drupal_dirs = {6: '~/.drush/drupal-versions/drupal-6.x-dev', 7: '~/.drush/drupal-versions/drupal-7.x-dev', 8: '~/src/drupal/drupal'}
+
+" Standards
+set number
+set wildmode=longest,list
+set fileformats=unix
+set history=300
+set ruler
+set showmode
+set showmatch
+set nowrap
+set hlsearch
+set backspace=2
+set linebreak
+set formatoptions=1
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set expandtab
 
-" Colors
+" Indents
+set smartindent
 
+" Save on lose focus
+au FocusLost * :wa
+
+" Gutters
+set numberwidth=4
+
+" Git gutter
+let g:gitgutter_eager = 0
+let g:gitgutter_sign_column_always = 1
+
+" Map leader to ","
+let mapleader=","
+
+" Theme.
+syntax enable
+" Whitespace intentional on this line!
+set fillchars+=vert:\
 set background=dark
 let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
 let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
+set term=screen-256color
+"set t_Co=256
 colorscheme solarized
-call togglebg#map("<F5>")
 
-let mapleader=","
-nmap <leader>v :tabedit $MYVIMRC<CR>
-syntax enable
+" Paste mode
+set pastetoggle=<F2>
 
-" Javascript
-au BufNewFile,BufRead *.bones set filetype=javascript
-au BufNewFile,BufRead *.json set filetype=javascript
-au BufNewFile,BufRead *._ set filetype=html
-au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.js set makeprg=fixjsstyle\ %
-au BufNewFile,BufRead *.js set errorformat=%-P-----\ FILE\ \ :\ \ %f\ -----,Line\ %l\\,\ E:%n:\ %m,%-Q,%-GFound\ %s,%-GSome\ %s,%-Gfixjsstyle%s,%-Gscript\ can\ %s,%-G
+" Code folding
+set foldmethod=indent
+set foldlevel=99
+au BufRead * normal zR
 
-autocmd BufRead,BufNewFile *.mss set syntax=carto
-autocmd BufRead,BufNewFile *.css set tabstop=2 | set shiftwidth=2
-autocmd BufRead,BufNewFile *.html set tabstop=2 | set shiftwidth=2
-autocmd BufRead,BufNewFile *.hbs set tabstop=2 | set shiftwidth=2
-au BufRead,BufNewFile *.scss set filetype=scss
+" Search
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
+nnoremap <leader>a :Ag
 
-augroup hbs
-  autocmd BufRead *.hbs set filetype=html
-augroup END
+" Task list binding
+map <leader>td <Plug>TaskList
 
-" SyntaxComplete options
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-  \ if &omnifunc == "" |
-  \ setlocal omnifunc=syntaxcomplete#Complete |
-  \ endif
-endif
-
-" VIM-Session
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-
-" PHP Syntax Checking mapped to Leader/s
-set makeprg=php\ -l\ %
-noremap <silent> <Leader>s :!php -ln %
-noremap <silent> <Leader>rs :!php -f %
-
-" File browser focus
-map <leader>f :maca openFileBrowser:<CR>
-" DrupalCS support
-noremap <silent> <Leader>dcs :!phpcs --standard=DrupalCodingStandard %
-
-" Taglist
-let Tlist_Ctags_Cmd="/usr/local/Cellar/ctags/5.8/bin/ctags"
-
-" Tagbar
-let g:tagbar_ctags_bin='/usr/local/Cellar/ctags/5.8/bin/ctags'
-let g:tagbar_width=40
-" Display panel with \y (or ,y)
-map <leader>y :execute 'TagbarToggle'<CR>
-
-" Set PHP executable
-let s:php_executable='/Applications/MAMP/bin/php/php5.2.17/bin/php'
-
-" Highlight editing line
-hi LineNr guifg=#3D3D3D guibg=black gui=NONE ctermfg=darkgray ctermbg=NONE cterm=NONE
-
-" Syntastic
-if has('statusline')
-    set statusline+=%*
-    set laststatus=2
-    " Broken down into easily includeable segments
-    "set statusline=%<%f\ " Filename
-    "set statusline+=%w%h%m%r " Options
-    set statusline+=%{fugitive#statusline()}
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=\ [%{&ff}/%Y] " filetype
-    "set statusline+=\ [%{getcwd()}] " current dir
-    set statusline+=%#warningmsg#
-    let g:syntastic_enable_signs=1
-    let g:syntastic_auto_jump=1
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
-endif
-
-" Reload documents
-set autoread
-
-" Marked
-nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
-
-" PHPCS and Syntastic
-let g:syntastic_phpcs_conf="--standard=DrupalCodingStandard --extensions=php,module,inc,install,test,profile,theme"
-let g:syntastic_phpcs_disable=1
-
-" Drupal-specific
-let g:Drupal_dirs = {6: '/Users/kosta/Sites/d6', 7: '/Users/kosta/Sites/d7'}
-
-" Status bar
-set laststatus=2
-
-" Ctags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
+" Gundo toggle
+map <leader>g :GundoToggle<CR>
 
 " Remember last location in file
 if has("automcd")
@@ -136,32 +328,66 @@ if has("automcd")
     \| exe "normal g'\"" | endif
 endif
 
-" Show partial command in status line
-set showcmd
+" PHPCS and Syntastic. Drupal checkers are added by the Drupal plugin.
+let g:syntastic_php_phpcs_args="--report=csv --standard=PSR-2"
+let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'jsl']
+"let g:syntastic_mode_map = { "mode": "passive" }
+highlight SyntasticErrorSign guifg=white guibg=red
+highlight SyntasticErrorLine guibg=#2f0000
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_auto_loc_list=1
+let g:syntastic_always_populate_loc_list=1
 
-"SECTION: NERDTree Customization
-"" \d will hide/show
-" \b will enter :NERDTreeFromBookmark and then
-" " you can autocomplete the name of a bookmark
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>b :NERDTreeFromBookmark
-let NERDTreeIgnore=['\.pyc$', 'CVS', '\~$']
+" Hide tildes
+hi NonText guifg=bg
 
-function! s:ToggleWhitespaceMatch(mode)
-  let pattern = (a:mode == 'i') ? '\s\+\%#\@<!$' : '\s\+$'
-  if exists('w:whitespace_match_number')
-    call matchdelete(w:whitespace_match_number)
-    call matchadd('ExtraWhitespace', pattern, 10, w:whitespace_match_number)
-  else
-    " Something went wrong, try to be graceful.
-    let w:whitespace_match_number =  matchadd('ExtraWhitespace', pattern)
-  endif
-endfunction
+" Strip whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" No temporary files
-set nobackup
-set nowritebackup
-set noswapfile
+" Reselect pasted text
+nnoremap <leader>v V`]
 
-" Hide right sidebar
-set guioptions-=r
+" Automatically change window's cwd to file's dir
+"set autochdir
+
+" Window splits
+nnoremap <leader>w <C-w>v<C-w>l
+
+" Bind Ctrl+movement keys to navigate splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Highlight long lines
+set wrap
+set textwidth=80
+set formatoptions=qrn1
+set colorcolumn=85
+
+" Misc shortcuts
+nnoremap ; :
+
+" Python specific
+au FileType python set omnifunc=pythoncomplete#Complete
+au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
+" Vim notes
+let g:notes_suffix = '.md'
+let g:notes_directories = ['~/Dropbox/Notes']
+
+" Keep function prototype in scratch buffer
+set completeopt=menuone,preview
+
+" Powerline - see https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
