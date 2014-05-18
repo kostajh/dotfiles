@@ -35,6 +35,8 @@ alias vim='gvim -v'
 
 export EDITOR='gvim -v'
 
+alias laravel="/home/kosta/bin/laravel"
+
 # Task aliases
 alias ta="task add logged:false"
 alias ta-email="task add 'AC/Email' logged:false +today +work ac:96 proj:dh-overhead +next"
@@ -87,6 +89,9 @@ export LESS='-R '
 # Mutt
 alias mutt='mutt -F /home/kosta/.mutt/mayfirst'
 alias mutt-work='mutt -F /home/kosta/.mutt/work'
+
+# Teamocil
+complete -W "$(teamocil --list)" teamocil
 
 # taskd
 export TASKDDATA=/home/kosta/taskd

@@ -12,24 +12,19 @@ Bundle 'gcmt/wildfire.vim'
 Bundle 'vimwiki/vimwiki'
 Bundle 'bling/vim-bufferline'
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'chriskempson/base16-vim'
-Bundle 'reinh/vim-makegreen'
 Bundle 'lambdalisue/nose.vim'
 Bundle 'ervandew/supertab'
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
 Bundle 'myusuf3/numbers.vim'
 Bundle "guyzmo/notmuch-abook"
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
 Bundle 'amix/vim-zenroom2'
 Bundle 'junegunn/goyo.vim'
-"Bundle 'm2mdas/phpcomplete-extended'
+Bundle 'm2mdas/phpcomplete-extended'
 Bundle 'Shougo/vimshell.vim'
-Bundle 'dsawardekar/ember.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -37,14 +32,11 @@ Bundle 'Rykka/riv.vim'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'scratch.vim'
 Bundle 'tpope/vim-dispatch'
-"Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'stephpy/vim-phpdoc'
 Bundle 'nginx.vim'
-Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'mklabs/grunt.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'jamessan/vim-gnupg'
-"Bundle 'suan/vim-instant-markdown'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-unimpaired'
@@ -54,8 +46,6 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'othree/html5.vim'
 Bundle 'arnaud-lb/vim-php-namespace'
-"Bundle 'xolox/vim-easytags'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-sensible'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
@@ -68,7 +58,8 @@ Bundle 'honza/vim-snippets'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
+Bundle 'Yggdroot/LeaderF'
+"Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-git'
@@ -76,12 +67,10 @@ Bundle 'sjl/gundo.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'rstacruz/sparkup'
-"Bundle 'airblade/vim-gitgutter'
 Bundle 'mhinz/vim-signify'
-"Bundle 'techlivezheng/vim-plugin-tagbar-phpctags'
+Bundle 'techlivezheng/vim-plugin-tagbar-phpctags'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
-Bundle 'xolox/vim-notes'
 Bundle 'chrisbra/csv.vim'
 Bundle 'scratch'
 Bundle 'joonty/vdebug'
@@ -91,8 +80,6 @@ filetype plugin indent on
 syntax on
 
 " Eclim
-"inoremap <Down> <buffer> :PhpSearchContext<CR>
-"nnoremap <silent> <buffer> <F12> :PhpSearchContext<CR>
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimPhpValidate = 0
 let g:EclimFileTypeValidate = 0
@@ -107,9 +94,6 @@ let g:EclimLoclistSignText = 0
 let g:EclimUserSignText = 0
 let g:EclimUserSignHighlight = 0
 let g:EclimSignLevel = 0
-
-" YouCompleteMe
-"let g:ycm_add_preview_to_completeopt = 1
 
 " Goyo
 let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'goyo', 'vim-zenroom2']
@@ -127,8 +111,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 let g:phpcomplete_parse_docblock_comments = 1
 
 "Utilsnips
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -150,6 +132,7 @@ autocmd Filetype markdown setlocal wrap
 autocmd Filetype markdown setlocal linebreak
 autocmd Filetype markdown setlocal nolist
 autocmd Filetype markdown setlocal columns=80
+autocmd Filetype markdown setlocal textwidth=0
 
 "HTML
 :iabbrev </ </<C-X><C-O>
@@ -160,15 +143,12 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
 
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-" Vimroom
-nnoremap <silent> <Leader>mz <Plug>VimroomToggle
 
 " CSV
 let g:csv_autocmd_arrange = 1
@@ -177,13 +157,6 @@ aug CSV_Editing
   au BufRead,BufWritePost *.csv :%ArrangeColumn
   au BufWritePre *.csv :%UnArrangeColumn
 aug end
-
-" GitGutter
-let g:gitgutter_eager = 0
-let g:gitgutter_realtime = 0
-
-" No undo files
-set noundofile
 
 " XML formatting
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
@@ -211,10 +184,8 @@ map <leader>se :syntax enable<CR>
 let g:easytags_python_enabled = 1
 let g:easytags_php_enabled = 1
 
-" BuffergatorToggle
-"nnoremap <leader>b :BuffergatorToggle<CR>
-
 " No vim backups
+set noundofile
 set nobackup
 set nowritebackup
 set noswapfile
@@ -230,21 +201,6 @@ let s:php_executable='/usr/bin/php'
 
 " Highlight editing line
 hi LineNr guifg=#3D3D3D guibg=black gui=NONE ctermfg=darkgray ctermbg=black cterm=NONE
-
-" Drupal hooks
-iabbr Hook <C-R>=HookFunc()<CR>
-
-" HookFunc(): Drupal helper function
-function! HookFunc()
-  let f = strpart(expand("%:t"), 0, stridx(expand("%:t"), '.', 0))
-
-  " wtf?
-  let a = input("")
-
-  let h = input("Which hook? ")
-
-  return "/**\<CR>Implements hook_" . h . "()\<CR>/\<CR>" . "function " . f . "_" . h . "() {\<CR>}\<ESC>k%i"
-endfunction
 
 " Behat
 let feature_filetype='behat'
@@ -316,9 +272,6 @@ set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>a :Ag
 
-" Task list binding
-map <leader>td <Plug>TaskList
-
 " Gundo toggle
 map <leader>g :GundoToggle<CR>
 
@@ -351,7 +304,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>v V`]
 
 " Automatically change window's cwd to file's dir
-"set autochdir
+set autochdir
 
 " Window splits
 nnoremap <leader>w <C-w>v<C-w>l
@@ -375,19 +328,5 @@ nnoremap ; :
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
-" Vim notes
-let g:notes_suffix = '.md'
-let g:notes_directories = ['~/Dropbox/Notes']
-
 " Keep function prototype in scratch buffer
 set completeopt=menuone,preview
-
-" Powerline - see https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
