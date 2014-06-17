@@ -5,35 +5,37 @@ call vundle#rc()
 
 " Vundle Bundles
 Bundle 'gmarik/vundle'
-Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'file:///home/kosta/src/drupal/drupal.vim'
+Bundle 'elzr/vim-json'
 Bundle 'jaxbot/github-issues.vim'
 Bundle 'gcmt/wildfire.vim'
 Bundle 'vimwiki/vimwiki'
 Bundle 'bling/vim-bufferline'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'lambdalisue/nose.vim'
+Bundle 'vim-php/vim-php-refactoring'
+Bundle 'evidens/vim-twig'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'dsawardekar/ember.vim'
 Bundle 'ervandew/supertab'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'myusuf3/numbers.vim'
+Bundle 'ap/vim-css-color'
 Bundle "guyzmo/notmuch-abook"
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
+Bundle 'tsukkee/unite-tag'
+Bundle 'Shougo/unite-outline'
+Bundle 'osyo-manga/unite-quickfix'
 Bundle 'amix/vim-zenroom2'
 Bundle 'junegunn/goyo.vim'
-Bundle 'm2mdas/phpcomplete-extended'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Rykka/riv.vim'
 Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'scratch.vim'
 Bundle 'tpope/vim-dispatch'
-Bundle 'stephpy/vim-phpdoc'
-Bundle 'nginx.vim'
+Bundle "tobyS/skeletons.vim"
+Bundle 'sickill/vim-pasta'
+Bundle 'tobyS/vmustache'
 Bundle 'mklabs/grunt.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'jamessan/vim-gnupg'
@@ -42,33 +44,27 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-liquid'
 Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
 Bundle 'Raimondi/delimitMate'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'othree/html5.vim'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'tpope/vim-sensible'
-Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
 Bundle 'Shougo/vimfiler.vim'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
 Bundle 'Yggdroot/LeaderF'
-"Bundle 'kien/ctrlp.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-git'
-Bundle 'sjl/gundo.vim'
 Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/TaskList.vim'
 Bundle 'rstacruz/sparkup'
 Bundle 'mhinz/vim-signify'
-Bundle 'techlivezheng/vim-plugin-tagbar-phpctags'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'chrisbra/csv.vim'
@@ -78,6 +74,12 @@ Bundle 'ntpeters/vim-better-whitespace'
 
 filetype plugin indent on
 syntax on
+
+" Spell check
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.wiki setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.md set complete+=kspell
+autocmd BufRead,BufNewFile *.wiki set complete+=kspell
 
 " Eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -95,8 +97,11 @@ let g:EclimUserSignText = 0
 let g:EclimUserSignHighlight = 0
 let g:EclimSignLevel = 0
 
-" Goyo
-let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'goyo', 'vim-zenroom2']
+let g:php_refactor_command='php /home/kosta/bin/refactor.phar'
+let g:mustache_abbreviations = 1
+
+" Github/Vim
+let g:github_access_token = "8ea993b3c99372cfb55c4e4e1ce65046375bb62c"
 
 " Supertab
 let g:SuperTabDefaultCompletionType = 'context'
@@ -107,9 +112,6 @@ let g:vimfiler_as_default_explorer = 1
 " Quick edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-"PHPComplete
-let g:phpcomplete_parse_docblock_comments = 1
-
 "Utilsnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -118,7 +120,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '/run/media/kosta/data/Dropbox/vimwiki'}]
+let g:vimwiki_list = [{'path': '/mnt/data/Dropbox/vimwiki'}]
 
 " Fullscreen mode
 map <silent> <F11>
@@ -133,22 +135,6 @@ autocmd Filetype markdown setlocal linebreak
 autocmd Filetype markdown setlocal nolist
 autocmd Filetype markdown setlocal columns=80
 autocmd Filetype markdown setlocal textwidth=0
-
-"HTML
-:iabbrev </ </<C-X><C-O>
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd Filetype php setlocal omnifunc=phpcomplete#CompletePHP
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
 
 " CSV
 let g:csv_autocmd_arrange = 1
@@ -165,9 +151,13 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 command! RstPreview :!rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 nnoremap <C-p><C-r> :RstPreview<CR>
 
-" CtrlPBuffer
-nnoremap <C-p><C-y> :CtrlPBufTag<CR>
-nnoremap <C-p><C-p> :CtrlPTag<CR>
+" Unite
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <C-y> :Unite outline<cr>
+noremap <space>/ :Unite grep:.<cr>
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+nnoremap <space>s :Unite -quick-match buffer -auto-preview<cr>
 
 " Always edit in utf-8:
 set encoding=utf-8
@@ -183,18 +173,17 @@ map <leader>se :syntax enable<CR>
 " Easytags
 let g:easytags_python_enabled = 1
 let g:easytags_php_enabled = 1
+set tags=./tags;
+let g:easytags_dynamic_files = 1
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
+let g:easytags_always_enabled = 0
 
 " No vim backups
 set noundofile
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Tagbar
-let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-let g:tagbar_width=40
-map <leader>y :TagbarToggle<CR>
 
 " Set PHP executable
 let s:php_executable='/usr/bin/php'
@@ -235,10 +224,6 @@ au FocusLost * :wa
 " Gutters
 set numberwidth=4
 
-" Git gutter
-let g:gitgutter_eager = 0
-let g:gitgutter_sign_column_always = 1
-
 " Map leader to ","
 let mapleader=","
 
@@ -251,7 +236,7 @@ let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_termcolors=256
 set term=screen-256color
-"set t_Co=256
+set t_Co=256
 colorscheme solarized
 
 " Paste mode
@@ -272,9 +257,6 @@ set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>a :Ag
 
-" Gundo toggle
-map <leader>g :GundoToggle<CR>
-
 " Remember last location in file
 if has("automcd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -285,7 +267,6 @@ endif
 let g:syntastic_php_phpcs_args="--report=csv --standard=PSR-2"
 let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'jsl']
-"let g:syntastic_mode_map = { "mode": "passive" }
 highlight SyntasticErrorSign guifg=white guibg=red
 highlight SyntasticErrorLine guibg=#2f0000
 set statusline+=%#warningmsg#
@@ -302,9 +283,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Reselect pasted text
 nnoremap <leader>v V`]
-
-" Automatically change window's cwd to file's dir
-set autochdir
 
 " Window splits
 nnoremap <leader>w <C-w>v<C-w>l
@@ -324,9 +302,15 @@ set colorcolumn=85
 " Misc shortcuts
 nnoremap ; :
 
-" Python specific
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 " Keep function prototype in scratch buffer
-set completeopt=menuone,preview
+set completeopt+=preview

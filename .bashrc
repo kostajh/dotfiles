@@ -29,6 +29,7 @@ fi
 
 # Eclimd
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
+alias refactor="php /home/kosta/bin/refactor.phar"
 
 # Vim
 alias vim='gvim -v'
@@ -97,6 +98,7 @@ complete -W "$(teamocil --list)" teamocil
 export TASKDDATA=/home/kosta/taskd
 # alias pstorm="nohup /bin/bash /home/kosta/PHPStorm/bin/phpstorm.sh &"
 export PATH=$HOME/.composer/vendor/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.composer/vendor/techlivezheng/phpctags:$PATH
 export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=localhost remote_port=9000"
 #export PHP_IDE_CONFIG="serverName=RunTests"
