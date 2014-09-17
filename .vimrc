@@ -1,20 +1,25 @@
 set nocompatible               " be iMproved
 filetype off
 set runtimepath+=~/.vim/bundle/neobundle.vim/
+set rtp+=~/.fzf
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 call neobundle#local("~/src/drupal", {}, ['drupal.vim'])
 call neobundle#end()
 NeoBundleCheck
 " Bundles
-" NeoBundle 'drupal.vim', {'type' : 'nosync', 'base': '~/src/drupal/drupal.vim'}
 NeoBundleLocal '~/src/drupal/drupal.vim'
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'reedes/vim-colors-pencil'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tommcdo/vim-exchange'
+NeoBundle 'reedes/vim-lexical'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'bling/vim-bufferline'
-NeoBundle 'vim-php/vim-php-refactoring'
+" NeoBundle 'vim-php/vim-php-refactoring'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'dsawardekar/ember.vim'
@@ -23,19 +28,26 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'ap/vim-css-color'
 NeoBundle "guyzmo/notmuch-abook"
-NeoBundle 'Shougo/neobundle-vim-recipes'
-NeoBundleRecipe 'vimproc'
+NeoBundle "christoomey/vim-tmux-navigator"
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'amix/vim-zenroom2'
+" NeoBundle 'amix/vim-zenroom2'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Rykka/riv.vim'
-NeoBundle 'shawncplus/phpcomplete.vim'
+" NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle "tobyS/skeletons.vim"
 NeoBundle 'sickill/vim-pasta'
@@ -48,11 +60,11 @@ NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-liquid'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-easytags'
+" NeoBundle 'xolox/vim-easytags'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'StanAngeloff/php.vim'
+" NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'othree/html5.vim'
-NeoBundle 'arnaud-lb/vim-php-namespace'
+" NeoBundle 'arnaud-lb/vim-php-namespace'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomtom/tlib_vim'
@@ -70,7 +82,8 @@ NeoBundle 'fs111/pydoc.vim'
 NeoBundle 'rstacruz/sparkup'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-markdown'
+NeoBundle 'plasticboy/vim-markdown'
+" NeoBundle 'tpope/vim-markdown'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'scratch'
 NeoBundle 'joonty/vdebug'
@@ -85,23 +98,6 @@ autocmd BufRead,BufNewFile *.wiki setlocal spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md set complete+=kspell
 autocmd BufRead,BufNewFile *.wiki set complete+=kspell
 
-" Eclim
-let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimPhpValidate = 0
-let g:EclimFileTypeValidate = 0
-let g:EclimPhpDrupalValidate = 0
-let g:EclimShowCurrentError = 0
-let g:airline#extensions#eclim#enabled = 1
-" Hide signs
-let g:EclimShowQuickfixSigns = 0
-let g:EclimShowLoclistSigns = 0
-let g:EclimQuickfixSignText = 0
-let g:EclimLoclistSignText = 0
-let g:EclimUserSignText = 0
-let g:EclimUserSignHighlight = 0
-let g:EclimSignLevel = 0
-
-let g:php_refactor_command='php /home/kosta/bin/refactor.phar'
 let g:mustache_abbreviations = 1
 
 " Github/Vim
@@ -169,19 +165,19 @@ set encoding=utf-8
 " Enforce consistent line endings: if 'ff' is set to "unix" and there are any
 " stray '\r' characters at ends of lines, then automatically remove them. See
 " $VIMRUNTIME/indent/php.vim .
-let PHP_removeCRwhenUnix = 1
+" let PHP_removeCRwhenUnix = 1
 
 " Shortcut syntax enable
 map <leader>se :syntax enable<CR>
 
 " Easytags
 let g:easytags_python_enabled = 1
-let g:easytags_php_enabled = 1
+let g:easytags_php_enabled = 0
 set tags=./tags;
 let g:easytags_dynamic_files = 1
-let g:easytags_auto_update = 1
+let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 1
-let g:easytags_always_enabled = 1
+let g:easytags_always_enabled = 0
 
 " No vim backups
 set noundofile
@@ -199,7 +195,7 @@ hi LineNr guifg=#3D3D3D guibg=black gui=NONE ctermfg=darkgray ctermbg=black cter
 let feature_filetype='behat'
 
 " Drupal plugin
-let g:Drupal_dirs = {6: '~/.drush/drupal-versions/drupal-6.x-dev', 7: '~/.drush/drupal-versions/drupal-7.x-dev', 8: '~/src/drupal/drupal'}
+" let g:Drupal_dirs = {6: '~/.drush/drupal-versions/drupal-6.x-dev', 7: '~/.drush/drupal-versions/drupal-7.x-dev', 8: '~/src/drupal/drupal'}
 
 " Standards
 set number
@@ -233,14 +229,15 @@ let mapleader=","
 
 " Theme.
 syntax enable
-" Whitespace intentional on this line!
 set fillchars+=vert:\
 set background=dark
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_termcolors=256
-set term=screen-256color
-set t_Co=256
+if (!has('gui_running'))
+  set term=screen-256color
+  set t_Co=256
+endif
 colorscheme solarized
 
 " Paste mode
@@ -268,8 +265,9 @@ if has("automcd")
 endif
 
 " PHPCS and Syntastic. Drupal checkers are added by the Drupal plugin.
-let g:syntastic_php_phpcs_args="--report=csv --standard=PSR-2"
-let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+" let g:syntastic_php_phpcs_args="--report=csv --standard=PSR-2"
+" let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes' : ['php']}
 let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'jsl']
 highlight SyntasticErrorSign guifg=white guibg=red
 highlight SyntasticErrorLine guibg=#2f0000
@@ -312,7 +310,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+" autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal tabstop=8 expandtab shiftwidth=4 softtabstop=4
 

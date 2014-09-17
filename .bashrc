@@ -1,7 +1,7 @@
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 __task_ps1() {
-  __ACTIVE_TASK_PROJECT="$(task _get $(task +ACTIVE id).project)"
+    __ACTIVE_TASK_PROJECT="$(task _get $(task +ACTIVE id).project)"
   __ACTIVE_TASK_DESC="$(task _get $(task +ACTIVE id).description)"
   __ACTIVE_TASK_AC_ID="$(task _get $(task +ACTIVE id).ac)"
   __ACTIVE_TASK_ID="$(task +ACTIVE id)"
@@ -26,6 +26,7 @@ fi
 if [ -f /home/kosta/.composer/vendor/drush/drush/examples/example.bashrc ] ; then
     . /home/kosta/.composer/vendor/drush/drush/examples/example.bashrc
 fi
+source /home/kosta/.composer/vendor/drush/drush/drush.complete.sh
 
 # Eclimd
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
@@ -46,7 +47,6 @@ alias work="task todo"
 alias today="task today"
 alias life="task life"
 alias ts="ac timesheet"
-alias t="task"
 alias ta-lunch="task add Lunch logged:false ac:96 proj:dh-overhead +work +today +next"
 alias ta-training="task add training logged:false ac:23 proj:dh-training +work +next +today"
 alias ta-staff-meeting="task add Staff meeting logged:false ac:44 proj:dh-operations +work +next +today"
@@ -91,9 +91,14 @@ export LESS='-R '
 alias mutt='mutt -F /home/kosta/.mutt/mayfirst'
 alias mutt-work='mutt -F /home/kosta/.mutt/work'
 
+alias em="emacsclient -c"
+
+alias sshuttle="bash /home/kosta/src/sshuttle/sshuttle --dns -vvr cloud.kostaharlan.net 0/0"
+
 # Teamocil
 complete -W "$(teamocil --list)" teamocil
 
+export LANG=en_US.UTF-8
 # taskd
 export TASKDDATA=/home/kosta/taskd
 # alias pstorm="nohup /bin/bash /home/kosta/PHPStorm/bin/phpstorm.sh &"
@@ -104,4 +109,6 @@ export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=localhost remote_port=9000"
 #export PHP_IDE_CONFIG="serverName=RunTests"
 export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 eval $(dircolors -b $HOME/.dircolors)
+export PATH="/home/kosta/.cask/bin:$PATH"
 [ -n "$TMUX" ] && export TERM=screen-256color
+source ~/.fzf.bash
