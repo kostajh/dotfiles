@@ -17,6 +17,11 @@ __task_ps1() {
   [[ -n "$__ACTIVE_TASK_ID" ]] && printf "${1:- (%s)}" "$__ACTIVE_TASK"
 }
 
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export HISTSIZE=50000
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # Taskwarrior completion.
 if [ -f ~/src/taskwarrior/scripts/bash/task.sh ] ; then
   . ~/src/taskwarrior/scripts/bash/task.sh
@@ -98,6 +103,9 @@ alias sshuttle="bash /home/kosta/src/sshuttle/sshuttle --dns -vvr cloud.kostahar
 # Teamocil
 complete -W "$(teamocil --list)" teamocil
 
+# Mosh IRC
+alias irc="mosh cloud.kostaharlan.net -- screen -D -RR weechat weechat-curses"
+
 export LANG=en_US.UTF-8
 # taskd
 export TASKDDATA=/home/kosta/taskd
@@ -112,3 +120,4 @@ eval $(dircolors -b $HOME/.dircolors)
 export PATH="/home/kosta/.cask/bin:$PATH"
 [ -n "$TMUX" ] && export TERM=screen-256color
 source ~/.fzf.bash
+source ~/.autoenv/activate.sh

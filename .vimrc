@@ -19,6 +19,8 @@ NeoBundle 'jaxbot/github-issues.vim'
 NeoBundle 'gcmt/wildfire.vim'
 NeoBundle 'vimwiki/vimwiki'
 NeoBundle 'bling/vim-bufferline'
+NeoBundle 'alfredodeza/khuno.vim'
+NeoBundle "xolox/vim-notes"
 " NeoBundle 'vim-php/vim-php-refactoring'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -66,7 +68,8 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'othree/html5.vim'
 " NeoBundle 'arnaud-lb/vim-php-namespace'
 NeoBundle 'tpope/vim-sensible'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tomtom/tcomment_vim'
@@ -111,6 +114,10 @@ let g:vimfiler_as_default_explorer = 1
 
 " Quick edit vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Notes
+let g:notes_suffix = '.txt'
+let g:notes_directories = ['/mnt/data/Dropbox/vim-notes']
 
 "Utilsnips
 let g:UltiSnipsExpandTrigger="<tab>"
