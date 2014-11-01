@@ -1,3 +1,4 @@
+source ~/.bash_aliases
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 __task_ps1() {
@@ -33,6 +34,8 @@ if [ -f /home/kosta/.composer/vendor/drush/drush/examples/example.bashrc ] ; the
 fi
 source /home/kosta/.composer/vendor/drush/drush/drush.complete.sh
 
+alias drush7="/home/kosta/src/drupal/drush/drush"
+
 # Eclimd
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
 alias refactor="php /home/kosta/bin/refactor.phar"
@@ -45,12 +48,14 @@ export EDITOR='gvim -v'
 alias laravel="/home/kosta/bin/laravel"
 
 # Task aliases
+alias tw="task"
 alias ta="task add logged:false"
 alias ta-email="task add 'AC/Email' logged:false +today +work ac:96 proj:dh-overhead +next"
 alias todo="task todo"
-alias work="task todo"
+alias logme="task logme"
 alias today="task today"
 alias life="task life"
+alias ttr="taskwarrior_time_report"
 alias ts="ac timesheet"
 alias ta-lunch="task add Lunch logged:false ac:96 proj:dh-overhead +work +today +next"
 alias ta-training="task add training logged:false ac:23 proj:dh-training +work +next +today"
@@ -96,7 +101,9 @@ export LESS='-R '
 alias mutt='mutt -F /home/kosta/.mutt/mayfirst'
 alias mutt-work='mutt -F /home/kosta/.mutt/work'
 
+alias e='emacsclient -t'
 alias em="emacsclient -c"
+alias ec='emacsclient -c'
 
 alias sshuttle="bash /home/kosta/src/sshuttle/sshuttle --dns -vvr cloud.kostaharlan.net 0/0"
 
@@ -119,5 +126,6 @@ export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 eval $(dircolors -b $HOME/.dircolors)
 export PATH="/home/kosta/.cask/bin:$PATH"
 [ -n "$TMUX" ] && export TERM=screen-256color
+#[ -n "$TMUX" ] && export TERM=xterm-256color
 source ~/.fzf.bash
 source ~/.autoenv/activate.sh

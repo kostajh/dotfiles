@@ -89,7 +89,7 @@ NeoBundle 'plasticboy/vim-markdown'
 " NeoBundle 'tpope/vim-markdown'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'scratch'
-NeoBundle 'joonty/vdebug'
+" NeoBundle 'joonty/vdebug'
 NeoBundle 'ntpeters/vim-better-whitespace'
 
 filetype plugin indent on
