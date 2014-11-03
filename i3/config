@@ -18,8 +18,7 @@ exec --no-startup-id emacs --daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id owncloud
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-fill /home/kosta/Pictures/Great_Wave_off_Kanagawa2.png
-exec --no-startup-id i3-msg 'workspace 4:Email; exec emacsclient -n -c --eval "(mu4e)"'
+exec --no-startup-id feh --bg-fill /home/kosta/Pictures/bigdipper.png
 
 # Audio Control
 bindsym XF86AudioRaiseVolume exec amixer -c 0 set Speaker 5+

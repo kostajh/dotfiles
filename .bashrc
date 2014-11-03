@@ -35,6 +35,7 @@ fi
 source /home/kosta/.composer/vendor/drush/drush/drush.complete.sh
 
 alias drush7="/home/kosta/src/drupal/drush/drush"
+alias youve_got_mail="bash ~/src/dotfiles/youve_got_mail.sh"
 
 # Eclimd
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
