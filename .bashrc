@@ -36,9 +36,10 @@ source /home/kosta/.composer/vendor/drush/drush/drush.complete.sh
 
 alias drush7="/home/kosta/src/drupal/drush/drush"
 alias youve_got_mail="bash ~/src/dotfiles/youve_got_mail.sh"
+alias detect_displays="bash ~/src/dotfiles/detect_displays.sh"
 
 # Eclimd
-alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_793567567_linux_gtk_x86_64/eclimd"
+alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_646169614_linux_gtk_x86_64/eclimd"
 alias refactor="php /home/kosta/bin/refactor.phar"
 
 # Vim
@@ -51,16 +52,11 @@ alias laravel="/home/kosta/bin/laravel"
 # Task aliases
 alias tw="task"
 alias ta="task add logged:false"
-alias ta-email="task add 'AC/Email' logged:false +today +work ac:96 proj:dh-overhead +next"
 alias todo="task todo"
 alias logme="task logme"
 alias today="task today"
 alias life="task life"
 alias ttr="taskwarrior_time_report"
-alias ts="ac timesheet"
-alias ta-lunch="task add Lunch logged:false ac:96 proj:dh-overhead +work +today +next"
-alias ta-training="task add training logged:false ac:23 proj:dh-training +work +next +today"
-alias ta-staff-meeting="task add Staff meeting logged:false ac:44 proj:dh-operations +work +next +today"
 
 source /etc/bash_completion.d/git
 source /usr/share/git-core/contrib/completion/git-prompt.sh
@@ -126,7 +122,7 @@ export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=localhost remote_port=9000"
 export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 eval $(dircolors -b $HOME/.dircolors)
 export PATH="/home/kosta/.cask/bin:$PATH"
-[ -n "$TMUX" ] && export TERM=screen-256color
+#[ -n "$TMUX" ] && export TERM=screen-256color
 #[ -n "$TMUX" ] && export TERM=xterm-256color
 source ~/.fzf.bash
 source ~/.autoenv/activate.sh

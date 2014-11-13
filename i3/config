@@ -12,20 +12,23 @@
 set $mod Mod4
 
 # GNOME things
-exec /usr/libexec/gnome-settings-daemon
-exec /usr/bin/gnome-keyring-daemon
+exec --no-startup-id /usr/libexec/gnome-settings-daemon
+exec --no-startup-id export $(gnome-keyring-daemon)
 exec --no-startup-id emacs --daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id owncloud
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill /home/kosta/Pictures/bigdipper.png
 
+# Shortcuts
+bindsym Mod4+shift+d exec emacsclient -c -n --alternate-editor=''
+
 # Audio Control
 bindsym XF86AudioRaiseVolume exec amixer -c 0 set Speaker 5+
 bindsym XF86AudioLowerVolume exec amixer -c 0 set Speaker 5-
 
 # Default font
-font pango:DejaVu Sans Mono 9
+font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
