@@ -9,11 +9,23 @@
   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
             'flycheck-mode))
 
+;; Programming hooks
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(add-hook 'prog-mode-hook 'ggtags-mode)
+
+;; PHP hooks
+(add-hook 'php-mode-hook 'ggtags-mode)
+(add-hook 'php-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
+
 ;; Deft
 (defvar deft-extension "md")
 (defvar deft-directory "/mnt/data/ownCloud/Notes")
 (defvar deft-text-mode 'markdown-mode)
 (defvar deft-use-filename-as-title t)
+
+;; Sass
+(setq-default scss-compile-at-save nil)
 
 ;; mu4e
 (eval-after-load 'mu4e
@@ -70,7 +82,7 @@
                (number-to-string mu4e-update-interval)))))))
 
 ;; Jabber.el
-;; Jabber.el
+(add-hook 'jabber-chat-mode-hook 'flyspell-mode)
 (defvar hipchat-number "115486")
 (defvar hipchat-nickname "Kosta Harlan")
  
@@ -99,3 +111,12 @@
             (setq truncate-lines t)
             (setq word-wrap t)))
 
+;; psysh.el
+(defun psysh-set-breakpoint()
+  (interactive)
+  (move-beginning-of-line 1)
+  (open-line 1)
+  (next-line 1)
+  (insert "require_once '/home/kosta/.composer/vendor/bin/psysh'; Psy\\Shell::debug(get_defined_vars());")
+  (open-line 1)
+  )

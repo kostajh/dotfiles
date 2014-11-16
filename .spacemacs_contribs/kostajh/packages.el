@@ -1,16 +1,18 @@
 (defvar kostajh-packages
   '(
+    ag
     deft
-    jabber
-    twittering-mode
-    helm-ag
-    php-mode
-    php-extras
     drupal-mode
     edit-server
+    ggtags
+    helm-ag
+    jabber
+    php-extras
+    php-mode
+    rest-client
     syslog-mode
+    twittering-mode
     yaml-mode
-    ag
     ))
 
 ;; Mu4e needs to be loaded manually.
