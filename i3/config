@@ -11,6 +11,11 @@
 
 set $mod Mod4
 
+# Window styles
+for_window [class="urxvt"] border 1pixel
+for_window [class="emacsclient"] border 1pixel
+for_window [class="emacs"] border 1pixel
+
 # GNOME things
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id export $(gnome-keyring-daemon)
