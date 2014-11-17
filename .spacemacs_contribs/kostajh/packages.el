@@ -9,7 +9,7 @@
     jabber
     php-extras
     php-mode
-    rest-client
+    restclient
     syslog-mode
     twittering-mode
     yaml-mode
