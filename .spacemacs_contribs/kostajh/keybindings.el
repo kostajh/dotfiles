@@ -10,3 +10,12 @@
    "gp" 'ggtags-prev-mark
    "gn" 'ggtags-next-mark
    )
+
+;; jabber bindings
+(evil-leader/set-key
+  "jl" 'jabber-activity-switch-to
+  "jr" 'jabber-switch-to-roster-buffer
+  "jc" 'jabber-chat-with
+  "jd" 'jabber-disconnect
+  "jj" 'jabber-connect-all
+  )
