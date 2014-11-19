@@ -20,6 +20,10 @@
 (require 'mu4e)
 (global-set-key [f11] 'mu4e)
 
+;; Load psysh-debug-mode manually.
+(add-to-list 'load-path "/home/kosta/src/psysh-debug-mode.el")
+(require 'psysh-debug-mode)
+
 (defun kostajh/init-helm-ag ()
   (use-package helm-ag
     :init

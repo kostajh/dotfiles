@@ -3,8 +3,8 @@
 
 ;; Enable flycheck for the following modes
 (dolist (mode '(php
-                drupal 
-                json 
+                drupal
+                json
                 yaml))
   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
             'flycheck-mode))
@@ -85,7 +85,7 @@
 (add-hook 'jabber-chat-mode-hook 'flyspell-mode)
 (defvar hipchat-number "115486")
 (defvar hipchat-nickname "Kosta Harlan")
- 
+
 ;; Join a room
 (defun hipchat-join (room)
     (interactive "sRoom name: ")
@@ -94,7 +94,7 @@
         (concat hipchat-number "_" room "@conf.hipchat.com")
         hipchat-nickname
         t))
- 
+
 ;; Mention nicknames in a way that HipChat clients will pickup
 (defun hipchat-mention (nickname)
     (interactive
@@ -110,13 +110,3 @@
             (flyspell-mode t)
             (setq truncate-lines t)
             (setq word-wrap t)))
-
-;; psysh.el
-(defun psysh-set-breakpoint()
-  (interactive)
-  (move-beginning-of-line 1)
-  (open-line 1)
-  (next-line 1)
-  (insert "require_once '/home/kosta/.composer/vendor/bin/psysh'; Psy\\Shell::debug(get_defined_vars());")
-  (open-line 1)
-  )
