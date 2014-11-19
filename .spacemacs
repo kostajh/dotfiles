@@ -33,6 +33,7 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
+  (load-theme 'solarized-dark)
 )
 
 ;; Custom variables
