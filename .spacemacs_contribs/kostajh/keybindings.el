@@ -4,18 +4,19 @@
 
 ;; ggtags bindings
 (evil-leader/set-key
-   "gv" 'ggtags-find-tag-dwim
-   "gd" 'ggtags-find-definition
-   "gr" 'ggtags-find-reference
-   "gp" 'ggtags-prev-mark
-   "gn" 'ggtags-next-mark
+   "ggv" 'ggtags-find-tag-dwim
+   "ggd" 'ggtags-find-definition
+   "ggr" 'ggtags-find-reference
+   "ggp" 'ggtags-prev-mark
+   "ggn" 'ggtags-next-mark
    )
 
 ;; jabber bindings
 (evil-leader/set-key
   "jl" 'jabber-activity-switch-to
   "jr" 'jabber-switch-to-roster-buffer
-  "jc" 'jabber-chat-with
+  "jw" 'jabber-chat-with
   "jd" 'jabber-disconnect
-  "jj" 'jabber-connect-all
+  "jc" 'jabber-connect
+  "jca" 'jabber-connect-all
   )
