@@ -8,6 +8,7 @@
     helm-ag
     jabber
     php-extras
+    php-auto-yasnippets
     php-mode
     restclient
     syslog-mode
