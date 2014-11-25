@@ -18,5 +18,5 @@
   "jw" 'jabber-chat-with
   "jd" 'jabber-disconnect
   "jc" 'jabber-connect
-  "jca" 'jabber-connect-all
+  "ja" 'jabber-connect-all
   )
