@@ -9,7 +9,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of contribution to load.
- dotspacemacs-configuration-layers '(kostajh python company-mode)
+ dotspacemacs-configuration-layers '(kostajh php python company-mode)
  ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only)
  dotspacemacs-fullscreen-at-startup nil
  ;; A list of packages and/or extensions that will not be install and loaded.
@@ -18,6 +18,7 @@
  ;; specified with an installed package.
  ;; Not used for now.
  dotspacemacs-default-package-repository nil
+ dotspacemacs-default-theme 'solarized-dark
 )
 
 ;; Functions
@@ -33,7 +34,6 @@
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  (load-theme 'solarized-dark)
 )
 
 ;; Custom variables
@@ -46,8 +46,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-idle-interval 0.25)
  '(ahs-inhibit-face-list nil)
- '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-safe-themes (quote ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(gnutls-min-prime-bits 1024)
  '(haskell-notify-p t)
  '(haskell-process-type (quote cabal-dev))
@@ -58,9 +57,11 @@ This function is called at the very end of Spacemacs initialization."
  '(jabber-alert-presence-hooks nil)
  '(jabber-history-enabled t)
  '(jabber-history-muc-enabled t)
+ '(magit-use-overlays nil)
  '(markdown-command "pandoc")
  '(php-manual-path "~/docs/php")
  '(php-mode-coding-style (quote psr2))
+ '(psysh-debug-bin-path "/home/kosta/.composer/vendor/bin/psysh")
  '(ring-bell-function (quote ignore) t)
  '(vc-follow-symlinks nil)
  '(visible-bell t))
@@ -72,4 +73,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 110 :family "M+ 1m Regular")))))
+ '(default ((t (:height 110 :family "M+ 1m Regular"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))

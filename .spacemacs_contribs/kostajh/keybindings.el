@@ -2,6 +2,13 @@
 (global-set-key [f8] 'deft)
 (global-set-key (kbd "C-c t e m") 'evil-mode)
 
+;; Org
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
+(global-set-key (kbd "<f12>") 'org-agenda)
+
 ;; ggtags bindings
 (evil-leader/set-key
    "ggv" 'ggtags-find-tag-dwim

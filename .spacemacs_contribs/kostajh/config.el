@@ -9,19 +9,40 @@
   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
             'flycheck-mode))
 
+;; Org
+(setq org-directory "~/org")
+(setq org-default-notes-file (concat org-directory "/notes/notes.org"))
+(setq org-agenda-files (quote ("~/org"
+                               "~/org/notes"
+                               "~/org/mitpress")))
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+
+
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-(add-hook 'prog-mode-hook 'ggtags-mode)
+;;(add-hook 'prog-mode-hook 'ggtags-mode)
 
 ;; PHP hooks
-(add-hook 'php-mode-hook 'ggtags-mode)
+;;(add-hook 'php-mode-hook 'ggtags-mode)
 (add-hook 'php-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
 
 ;; Deft
-(defvar deft-extension "md")
-(defvar deft-directory "/mnt/data/ownCloud/Notes")
-(defvar deft-text-mode 'markdown-mode)
+(defvar deft-extension "org")
+(defvar deft-directory "~/org/notes")
+(defvar deft-text-mode 'org-mode)
 (defvar deft-use-filename-as-title t)
 
 ;; Sass
@@ -50,6 +71,7 @@
     (setq gnutls-algorithm-priority "NORMAL:%COMPAT")
     (setq smtpmail-stream-type 'ssl
           smtpmail-smtp-service 465)
+    (setq mml2015-use 'epg)
     (setq mu4e-attachment-dir  "~/Downloads")
     (setq mu4e-maildir-shortcuts
         '( ("/INBOX"     . ?i)
@@ -61,7 +83,7 @@
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types))
-    (setq mu4e-html2text-command "pandoc -f html -t plain")
+    (setq mu4e-html2text-command "pandoc -f html -t markdown --columns=72")
 
     (setq message-kill-buffer-on-exit t)
 
