@@ -13,7 +13,7 @@
  ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only)
  dotspacemacs-fullscreen-at-startup nil
  ;; A list of packages and/or extensions that will not be install and loaded.
- dotspacemacs-excluded-packages '(auto-complete ac-ispell tern-auto-complete auto-complete-clang enslime edts)
+ dotspacemacs-excluded-packages '(auto-complete ac-ispell flycheck-ledger tern-auto-complete auto-complete-clang enslime edts)
  ;; The default package repository used if no explicit repository has been
  ;; specified with an installed package.
  ;; Not used for now.
@@ -59,6 +59,7 @@ This function is called at the very end of Spacemacs initialization."
  '(jabber-history-muc-enabled t)
  '(magit-use-overlays nil)
  '(markdown-command "pandoc")
+ '(org-clock-clocked-in-display (quote both))
  '(php-manual-path "~/docs/php")
  '(php-mode-coding-style (quote psr2))
  '(psysh-debug-bin-path "/home/kosta/.composer/vendor/bin/psysh")
@@ -67,7 +68,7 @@ This function is called at the very end of Spacemacs initialization."
  '(visible-bell t))
  '(ring-bell-function (quote ignore) t)
  '(send-mail-function (quote sendmail-send-it))
- 
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,4 +81,6 @@ This function is called at the very end of Spacemacs initialization."
  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
- '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+ '(outline-1 ((t (:inherit org-level-1 :height 1.0))))
+ '(outline-2 ((t (:inherit org-level-2 :height 1.0)))))
