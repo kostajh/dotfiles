@@ -7,7 +7,7 @@ from i3pystatus import Status
 status = Status(standalone=True)
 
 # Displays clock like this:
-# Tue 30 Jul 11:59:46 PM 
+# Tue 30 Jul 11:59:46 PM
 status.register("clock",
     format="%a %-d %b %X",)
 
@@ -98,14 +98,14 @@ status.register("pulseaudio",
 #         "stop": "◾",
 #     },)
 
-# Taskwarrior
-status.register("shell",
-                color="#b58900",
-                command="bash /home/kosta/.activetask.sh",
-                interval=5)
-status.register("shell",
-                color="#cb4b16",
-                command="echo $(task +OVERDUE count) overdue",
-                interval=60)
+# # Taskwarrior
+# status.register("shell",
+#                 color="#b58900",
+#                 command="bash /home/kosta/.activetask.sh",
+#                 interval=5)
+# status.register("shell",
+#                 color="#cb4b16",
+#                 command="echo $(task +OVERDUE count) overdue",
+#                 interval=60)
 
 status.run()
