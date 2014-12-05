@@ -1,6 +1,9 @@
 (add-to-list 'package-archives
                '("marmalade" . "https://marmalade-repo.org/packages/"))
 
+;; Linum
+(add-hook 'prog-mode-hook 'linum-mode)
+
 ;; Enable flycheck for the following modes
 (dolist (mode '(php
                 drupal
@@ -31,18 +34,6 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
-(add-hook 'org-clock-in-hook
-          'kostajh/org-active-task-to-file)
-(add-hook 'org-clock-out-hook
-          'kostajh/org-active-task-to-file)
-
-
-(defun kostajh/org-active-task-to-file ()
-  "Write the active task to a file"
-  (interactive)
-  ;; (append-to-file org-clock-current-task nil "/tmp/activetask.txt")
-    )
-
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
@@ -67,13 +58,12 @@
 ; Use the current window for indirect buffer display
 (setq org-indirect-buffer-display 'current-window)
 
-
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-;;(add-hook 'prog-mode-hook 'ggtags-mode)
+(add-hook 'prog-mode-hook 'ggtags-mode)
 
 ;; PHP hooks
-;;(add-hook 'php-mode-hook 'ggtags-mode)
+(add-hook 'php-mode-hook 'ggtags-mode)
 (add-hook 'php-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
 
@@ -160,7 +150,6 @@
     (interactive
         (list (jabber-muc-read-nickname jabber-group "Nickname: ")))
             (insert (concat "@\"" nickname "\" ")))
-
 
 ;; Twittering
 (setq twittering-use-master-password t)

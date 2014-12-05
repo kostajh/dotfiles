@@ -47,6 +47,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(company-backends (quote ((company-tern :with company-yasnippet) (php-extras-company :with company-yasnippet :with company-gtags :with company-capf :with company-dabbrev-code :with company-keywords :with company-files) (company-elisp :with company-yasnippet) (company-bbdb :with company-yasnippet) (company-nxml :with company-yasnippet) (company-css :with company-yasnippet) (company-eclim :with company-yasnippet) (company-semantic :with company-yasnippet) (company-clang :with company-yasnippet) (company-xcode :with company-yasnippet) (company-ropemacs :with company-yasnippet) (company-cmake :with company-yasnippet) (company-capf :with company-yasnippet) (company-dabbrev-code company-gtags company-etags company-keywords :with company-yasnippet) (company-oddmuse :with company-yasnippet) (company-files :with company-yasnippet) (company-dabbrev :with company-yasnippet))))
  '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(elfeed-feeds (quote ("https://www.drupal.org/planet/rss.xml")))
  '(gnutls-min-prime-bits 1024)
