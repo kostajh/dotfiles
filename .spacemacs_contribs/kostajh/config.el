@@ -9,9 +9,6 @@
   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
             'flycheck-mode))
 
-;; Drupal
-(setq drupal-get-function-args t)
-
 ;; Org
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))

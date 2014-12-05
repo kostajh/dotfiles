@@ -9,6 +9,14 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "<f12>") 'org-agenda)
 
+(evil-leader/set-key
+  "oc" 'org-capture
+  "oa" 'org-agenda
+  "ob" 'org-iswitchb
+  "oi" 'org-clock-in
+  "oo" 'org-clock-out
+  )
+
 ;; ggtags bindings
 (evil-leader/set-key
    "ggv" 'ggtags-find-tag-dwim

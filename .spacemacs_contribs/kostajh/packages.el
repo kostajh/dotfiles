@@ -1,6 +1,7 @@
 (defvar kostajh-packages
   '(
     ag
+    apache-mode
     deft
     drupal-mode
     edit-server
@@ -14,6 +15,9 @@
     syslog-mode
     twittering-mode
     yaml-mode
+    elfeed
+    circe
+    org-cliplink
     ))
 
 ;; Mu4e needs to be loaded manually.
