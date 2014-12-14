@@ -12,6 +12,7 @@
     php-auto-yasnippets
     php-mode
     restclient
+    sx
     syslog-mode
     twittering-mode
     yaml-mode

@@ -9,7 +9,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of contribution to load.
- dotspacemacs-configuration-layers '(kostajh php python company-mode)
+ dotspacemacs-configuration-layers '(kostajh php python company-mode javascript restclient github org-repo-todo)
  ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only)
  dotspacemacs-fullscreen-at-startup nil
  ;; A list of packages and/or extensions that will not be install and loaded.
@@ -48,7 +48,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(company-backends (quote ((company-tern :with company-yasnippet) (php-extras-company :with company-yasnippet :with company-gtags :with company-capf :with company-dabbrev-code :with company-keywords :with company-files) (company-elisp :with company-yasnippet) (company-bbdb :with company-yasnippet) (company-nxml :with company-yasnippet) (company-css :with company-yasnippet) (company-eclim :with company-yasnippet) (company-semantic :with company-yasnippet) (company-clang :with company-yasnippet) (company-xcode :with company-yasnippet) (company-ropemacs :with company-yasnippet) (company-cmake :with company-yasnippet) (company-capf :with company-yasnippet) (company-dabbrev-code company-gtags company-etags company-keywords :with company-yasnippet) (company-oddmuse :with company-yasnippet) (company-files :with company-yasnippet) (company-dabbrev :with company-yasnippet))))
- '(custom-safe-themes (quote ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(elfeed-feeds (quote ("https://www.drupal.org/planet/rss.xml")))
  '(gnutls-min-prime-bits 1024)
  '(haskell-notify-p t)
@@ -65,9 +65,12 @@ This function is called at the very end of Spacemacs initialization."
  '(magit-use-overlays nil)
  '(markdown-command "pandoc")
  '(org-clock-clocked-in-display (quote both))
+ '(paradox-github-token t)
  '(php-manual-path "~/docs/php")
  '(php-mode-coding-style (quote psr2))
  '(psysh-debug-bin-path "/home/kosta/.composer/vendor/bin/psysh")
+ '(rcirc-authenticate-before-join t)
+ '(rcirc-default-nick "kostajh")
  '(ring-bell-function (quote ignore) t)
  '(vc-follow-symlinks nil)
  '(visible-bell t))
@@ -88,4 +91,5 @@ This function is called at the very end of Spacemacs initialization."
  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
  '(outline-1 ((t (:inherit org-level-1 :height 1.0))))
- '(outline-2 ((t (:inherit org-level-2 :height 1.0)))))
+ '(outline-2 ((t (:inherit org-level-2 :height 1.0))))
+ '(outline-3 ((t (:inherit org-level-3 :height 1.0)))))

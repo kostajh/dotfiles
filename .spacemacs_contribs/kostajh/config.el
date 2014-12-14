@@ -17,10 +17,11 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-agenda-files (quote ("~/org"
                                "~/org/notes"
+                               "~/org/unc"
                                "~/org/mitpress")))
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+      (quote ((sequence "TODO(t)" "NEXT(n)" "DONE(d)" "|" "LOGGED(l)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING" "APPOINTMENT"))))
 
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("CANCELLED" . t))
@@ -29,6 +30,7 @@
               (done ("WAITING") ("HOLD"))
               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("LOGGED" ("DONE") ("WAITING") ("HOLD") ("CANCELLED"))
               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
 (setq org-clock-persist 'history)
@@ -58,6 +60,19 @@
 ; Use the current window for indirect buffer display
 (setq org-indirect-buffer-display 'current-window)
 
+;; Colors.
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "#d33682" :weight bold)
+              ("NEXT" :foreground "#cb4b16" :weight bold)
+              ("DONE" :foreground "#859900" :weight bold)
+              ("WAITING" :foreground "#b58900" :weight bold)
+              ("HOLD" :foreground "#6c71c4" :weight bold)
+              ("CANCELLED" :foreground "#859900" :weight bold)
+              ("MEETING" :foreground "#859900" :weight bold)
+              ("PHONE" :foreground "#859900" :weight bold))))
+
+(add-hook 'org-mode-hook 'auto-save-mode)
+
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (add-hook 'prog-mode-hook 'ggtags-mode)
@@ -66,6 +81,10 @@
 (add-hook 'php-mode-hook 'ggtags-mode)
 (add-hook 'php-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
+
+;; @see https://github.com/arnested/drupal-mode/issues/48
+;;(add-hook 'drupal-mode-hook 'setq drupal-get-function-args t)
+(add-hook 'find-file-hook 'auto-insert)
 
 ;; Deft
 (defvar deft-extension "org")
@@ -79,7 +98,7 @@
 ;; mu4e
 (eval-after-load 'mu4e
 '(progn
-(setq
+    (setq
      mu4e-maildir       "~/mail/mayfirst"   ;; top-level Maildir
         mu4e-sent-folder   "/INBOX.Sent"       ;; folder for sent messages
         mu4e-drafts-folder "/INBOX.Drafts"     ;; unfinished messages
@@ -88,6 +107,12 @@
         mu4e-get-mail-command "offlineimap -q"
         mu4e-update-interval 900
     )
+
+    (defun no-auto-fill ()
+      "Turn off auto-fill-mode."
+      (auto-fill-mode -1))
+
+    (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
 
     (setq message-send-mail-function 'smtpmail-send-it)
     (setq smtpmail-smtp-server "mail.mayfirst.org")
@@ -117,9 +142,6 @@
 
     (add-to-list 'mu4e-bookmarks
                  '("to:kharlan@isovera.com"           "Isovera"          ?i) t)
-
-    (add-to-list 'mu4e-bookmarks
-                 '("to:kosta@designhammer.com"        "DesignHammer"     ?d) t)
 
     (setq
        mu4e-compose-signature
