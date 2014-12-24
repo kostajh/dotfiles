@@ -7,6 +7,7 @@
 ;; Enable flycheck for the following modes
 (dolist (mode '(php
                 drupal
+                html
                 json
                 yaml))
   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
@@ -18,10 +19,15 @@
 (setq org-agenda-files (quote ("~/org"
                                "~/org/notes"
                                "~/org/unc"
+                               "~/org/pacmat"
                                "~/org/mitpress")))
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "DONE(d)" "|" "LOGGED(l)")
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)" "LOGGED(l)")
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING" "APPOINTMENT"))))
+
+(setq org-agenda-skip-scheduled-if-done t)
+
+(setq org-agenda-include-diary t)
 
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("CANCELLED" . t))
@@ -35,6 +41,12 @@
 
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
+
+; Auto-save buffers
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+            (auto-save-mode)))
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)

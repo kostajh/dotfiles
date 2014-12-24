@@ -5,6 +5,7 @@
     deft
     drupal-mode
     edit-server
+    geben
     ggtags
     helm-ag
     jabber
