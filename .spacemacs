@@ -9,7 +9,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of contribution to load.
- dotspacemacs-configuration-layers '(kostajh php python company-mode javascript restclient github org-repo-todo)
+ dotspacemacs-configuration-layers '(kostajh perspectives php python html company-mode javascript restclient git org-repo-todo)
  ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only)
  dotspacemacs-fullscreen-at-startup nil
  ;; A list of packages and/or extensions that will not be install and loaded.
@@ -26,6 +26,7 @@
 (defun dotspacemacs/init ()
   "User initialization for Spacemacs. This function is called at the very
  startup."
+  (setq-default git-enable-github-support t)
   (require 'server)
     (unless (server-running-p)
     (server-start))
