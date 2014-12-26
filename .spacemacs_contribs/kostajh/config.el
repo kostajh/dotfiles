@@ -22,8 +22,8 @@
                                "~/org/pacmat"
                                "~/org/mitpress")))
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)" "LOGGED(l)")
-              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING" "APPOINTMENT"))))
+      (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)" "LOGGED(l)" "CANCELLED(c@/!)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "PHONE" "MEETING" "APPOINTMENT"))))
 
 (setq org-agenda-skip-scheduled-if-done t)
 
@@ -111,8 +111,8 @@
 (eval-after-load 'mu4e
 '(progn
     (setq
-     mu4e-maildir       "~/mail/mayfirst"   ;; top-level Maildir
-        mu4e-sent-folder   "/INBOX.Sent"       ;; folder for sent messages
+     mu4e-maildir       "~/mail/fastmail"   ;; top-level Maildir
+        mu4e-sent-folder   "/INBOX.Sent Items"       ;; folder for sent messages
         mu4e-drafts-folder "/INBOX.Drafts"     ;; unfinished messages
         mu4e-trash-folder  "/INBOX.Trash"      ;; trashed messages
         mu4e-refile-folder "/INBOX.Archive"   ;; saved messages
@@ -127,9 +127,9 @@
     (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
 
     (setq message-send-mail-function 'smtpmail-send-it)
-    (setq smtpmail-smtp-server "mail.mayfirst.org")
+    (setq smtpmail-smtp-server "mail.messagingengine.com")
     (setq smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
-    (setq smtpmail-default-smtp-server "mail.mayfirst.org")
+    (setq smtpmail-default-smtp-server "mail.messagingengine.com")
     (setq smtpmail-local-domain "kostaharlan.net")
     (setq user-full-name "Kosta Harlan")
     (setq user-mail-address "kosta@kostaharlan.net")
@@ -141,7 +141,7 @@
     (setq mu4e-maildir-shortcuts
         '( ("/INBOX"     . ?i)
            ("/INBOX.Archive"   . ?a)
-           ("/INBOX.Sent"      . ?s)))
+           ("/INBOX.Sent Items"      . ?s)))
 
     ;; enable inline images
     (setq mu4e-view-show-images t)
