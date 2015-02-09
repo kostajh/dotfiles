@@ -59,6 +59,9 @@ alias life="task life"
 alias ttr="taskwarrior_time_report"
 
 source /etc/bash_completion.d/git
+source /etc/bash_completion.d/password-store
+source /etc/bash_completion.d/git-flow-completion.bash
+source /etc/bash_completion.d/yum-utils.bash
 source /usr/share/git-core/contrib/completion/git-prompt.sh
 if [ "\$(type -t __git_ps1)" ] && [ "\$(type -t __drush_ps1)" ]; then
   PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\n $(__git_ps1 " (%s)")$(__drush_ps1 "[%s]") $\[\e[m\] \[\e[0;37m\]'

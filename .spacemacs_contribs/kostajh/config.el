@@ -1,3 +1,5 @@
+(require 'org-install)
+(require 'ob-tangle)
 (add-to-list 'package-archives
                '("marmalade" . "https://marmalade-repo.org/packages/"))
 
@@ -87,10 +89,10 @@
 
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-(add-hook 'prog-mode-hook 'ggtags-mode)
+;; (add-hook 'prog-mode-hook 'ggtags-mode)
 
 ;; PHP hooks
-(add-hook 'php-mode-hook 'ggtags-mode)
+;; (add-hook 'php-mode-hook 'ggtags-mode)
 (add-hook 'php-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
 
@@ -193,3 +195,14 @@
             (flyspell-mode t)
             (setq truncate-lines t)
             (setq word-wrap t)))
+
+;; IRC
+;;(add-to-list 'rcirc-server-alist
+;;                     '("irc.flowdock.com"
+;;                     :port 6697 :channels ("") :encryption tls))
+
+;; Backups
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))

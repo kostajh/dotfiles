@@ -9,7 +9,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of contribution to load.
- dotspacemacs-configuration-layers '(kostajh perspectives php python html company-mode javascript restclient git org-repo-todo)
+ dotspacemacs-configuration-layers '(kostajh perspectives php python html company-mode javascript restclient git colors)
  ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only)
  dotspacemacs-fullscreen-at-startup nil
  ;; A list of packages and/or extensions that will not be install and loaded.
@@ -49,7 +49,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(company-backends (quote ((company-tern :with company-yasnippet) (php-extras-company :with company-yasnippet :with company-gtags :with company-capf :with company-dabbrev-code :with company-keywords :with company-files) (company-elisp :with company-yasnippet) (company-bbdb :with company-yasnippet) (company-nxml :with company-yasnippet) (company-css :with company-yasnippet) (company-eclim :with company-yasnippet) (company-semantic :with company-yasnippet) (company-clang :with company-yasnippet) (company-xcode :with company-yasnippet) (company-ropemacs :with company-yasnippet) (company-cmake :with company-yasnippet) (company-capf :with company-yasnippet) (company-dabbrev-code company-gtags company-etags company-keywords :with company-yasnippet) (company-oddmuse :with company-yasnippet) (company-files :with company-yasnippet) (company-dabbrev :with company-yasnippet))))
- '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(custom-safe-themes (quote ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(elfeed-feeds (quote ("https://www.drupal.org/planet/rss.xml")))
  '(gnutls-min-prime-bits 1024)
  '(haskell-notify-p t)
@@ -63,9 +63,12 @@ This function is called at the very end of Spacemacs initialization."
  '(jabber-history-muc-enabled t)
  '(linum-delay t)
  '(linum-eager nil)
+ '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
  '(markdown-command "pandoc")
- '(org-clock-clocked-in-display (quote both))
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t))))
+ '(org-clock-clocked-in-display (quote frame-title))
+ '(org-clock-out-remove-zero-time-clocks t)
  '(paradox-github-token t)
  '(php-manual-path "~/docs/php")
  '(php-mode-coding-style (quote psr2))

@@ -5,6 +5,7 @@
     deft
     drupal-mode
     edit-server
+    feature-mode
     geben
     ggtags
     helm-ag
