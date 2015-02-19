@@ -1,48 +1,60 @@
+;;; packages.el --- kostajh Layer packages File for Spacemacs
+;;
+;; Copyright (c) 2012-2014 Sylvain Benner
+;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
+;;
+;; Author: Sylvain Benner <sylvain.benner@gmail.com>
+;; URL: https://github.com/syl20bnr/spacemacs
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: GPLv3
+
 (defvar kostajh-packages
   '(
+    ;; package kostajhs go here
     ag
     apache-mode
     deft
     drupal-mode
     edit-server
     feature-mode
-    geben
     ggtags
     helm-ag
     jabber
-    php-extras
+    ;; php-extras
     php-auto-yasnippets
-    php-mode
-    restclient
-    sx
     syslog-mode
     twittering-mode
     yaml-mode
-    elfeed
-    circe
     org-cliplink
-    ))
+    )
+  "List of all packages to install and/or initialize. Built-in packages
+which require an initialization must be listed explicitly in the list.")
 
-;; Mu4e needs to be loaded manually.
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
-(require 'mu4e)
-(global-set-key [f11] 'mu4e)
-(require 'org-mu4e)
+(defvar kostajh-excluded-packages '()
+  "List of packages to exclude.")
 
-;; Load psysh-debug-mode manually.
-(add-to-list 'load-path "/home/kosta/src/psysh-debug-mode.el")
-(require 'psysh-debug-mode)
+;; For each package, define a function kostajh/init-<package-kostajh>
+;;
+;; (defun kostajh/init-my-package ()
+;;   "Initialize my package"
+;;   )
+;;
+;; Often the body of an initialize function uses `use-package'
+;; For more info on `use-package', see readme:
+;; https://github.com/jwiegley/use-package
 
-(defun kostajh/init-helm-ag ()
-  (use-package helm-ag
-    :init
-    (progn
-      (defun kostajh-helm-ag ()
-        (interactive)
-        (helm-ag (projectile-project-root)))
-      (evil-leader/set-key
-        "oa" 'kostajh-helm-ag))))
+;; (defun kostajh/init-helm-ag ()
+;;   (use-package helm-ag
+;;     :init
+;;     (progn
+;;       (defun kostajh-helm-ag ()
+;;         (interactive)
+;;         (helm-ag (projectile-project-root)))
+;;       (evil-leader/set-key
+;;         "oa" 'kostajh-helm-ag))))
 
-(defun kostajh/init-yaml-mode ()
-  (use-package yaml-mode
-    :defer t))
+;; (defun kostajh/init-yaml-mode ()
+;;   (use-package yaml-mode
+;;     :defer t))

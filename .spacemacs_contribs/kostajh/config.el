@@ -196,11 +196,6 @@
             (setq truncate-lines t)
             (setq word-wrap t)))
 
-;; IRC
-;;(add-to-list 'rcirc-server-alist
-;;                     '("irc.flowdock.com"
-;;                     :port 6697 :channels ("") :encryption tls))
-
 ;; Backups
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))

@@ -31,7 +31,10 @@ the value is nil then no banner is displayed.")
                                             company-mode
                                             javascript
                                             restclient
-                                            git
+                                            (git :variables
+                                                git-magit-status-fullscreen t
+                                                git-enable-github-support t
+                                                git-gutter-use-fringe t)
                                             colors))
   "List of configuration layers to load. If it is the symbol `all' instead
 of a list then all discovered layers will be installed."
@@ -166,21 +169,50 @@ If MSG is not nil then display a message in `*Messages'."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-ispell-requires 4)
  '(ahs-case-fold-search nil)
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
- '(company-backends (quote ((company-tern :with company-yasnippet) (php-extras-company :with company-yasnippet :with company-gtags :with company-capf :with company-dabbrev-code :with company-keywords :with company-files) (company-elisp :with company-yasnippet) (company-bbdb :with company-yasnippet) (company-nxml :with company-yasnippet) (company-css :with company-yasnippet) (company-eclim :with company-yasnippet) (company-semantic :with company-yasnippet) (company-clang :with company-yasnippet) (company-xcode :with company-yasnippet) (company-ropemacs :with company-yasnippet) (company-cmake :with company-yasnippet) (company-capf :with company-yasnippet) (company-dabbrev-code company-gtags company-etags company-keywords :with company-yasnippet) (company-oddmuse :with company-yasnippet) (company-files :with company-yasnippet) (company-dabbrev :with company-yasnippet))))
- '(custom-safe-themes (quote ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(company-backends
+   (quote
+    ((company-tern :with company-yasnippet)
+     (php-extras-company :with company-yasnippet :with company-gtags :with company-capf :with company-dabbrev-code :with company-keywords :with company-files)
+     (company-elisp :with company-yasnippet)
+     (company-bbdb :with company-yasnippet)
+     (company-nxml :with company-yasnippet)
+     (company-css :with company-yasnippet)
+     (company-eclim :with company-yasnippet)
+     (company-semantic :with company-yasnippet)
+     (company-clang :with company-yasnippet)
+     (company-xcode :with company-yasnippet)
+     (company-ropemacs :with company-yasnippet)
+     (company-cmake :with company-yasnippet)
+     (company-capf :with company-yasnippet)
+     (company-dabbrev-code company-gtags company-etags company-keywords :with company-yasnippet)
+     (company-oddmuse :with company-yasnippet)
+     (company-files :with company-yasnippet)
+     (company-dabbrev :with company-yasnippet))))
+ '(custom-safe-themes
+   (quote
+    ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(elfeed-feeds (quote ("https://www.drupal.org/planet/rss.xml")))
  '(gnutls-min-prime-bits 1024)
  '(haskell-notify-p t)
  '(haskell-process-type (quote cabal-dev))
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
- '(jabber-account-list (quote (("kostajh@gmail.com" (:network-server . "talk.google.com")) ("115486_1191911@chat.hipchat.com" (:network-server . "chat.hipchat.com") (:port . 5222)))))
- '(jabber-alert-message-hooks (quote (jabber-message-notifications jabber-message-echo jabber-message-scroll)))
+ '(jabber-account-list
+   (quote
+    (("kostajh@gmail.com"
+      (:network-server . "talk.google.com"))
+     ("115486_1191911@chat.hipchat.com"
+      (:network-server . "chat.hipchat.com")
+      (:port . 5222)))))
+ '(jabber-alert-message-hooks
+   (quote
+    (jabber-message-notifications jabber-message-echo jabber-message-scroll)))
  '(jabber-alert-presence-hooks nil)
  '(jabber-history-enabled t)
  '(jabber-history-muc-enabled t)
