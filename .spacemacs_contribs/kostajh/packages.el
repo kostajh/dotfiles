@@ -22,7 +22,7 @@
     ggtags
     helm-ag
     jabber
-    ;; php-extras
+    php-extras
     php-auto-yasnippets
     syslog-mode
     twittering-mode
@@ -37,9 +37,13 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function kostajh/init-<package-kostajh>
 ;;
-;; (defun kostajh/init-my-package ()
-;;   "Initialize my package"
-;;   )
+(defun kostajh/init-php-extras ()
+  "Initialize my package"
+  (use-package php-extras
+    :defer t
+    :mode ("\\.php\\'" . php-mode)
+    )
+  )
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:

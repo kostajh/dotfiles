@@ -150,17 +150,14 @@
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types))
-    (setq mu4e-html2text-command "pandoc -f html -t markdown --columns=72")
+    ;; (setq mu4e-html2text-command "pandoc -f html -t markdown --columns=72")
+    (require 'mu4e-contrib) 
+    (setq mu4e-html2text-command 'mu4e-shr2text)
 
     (setq message-kill-buffer-on-exit t)
 
     (add-to-list 'mu4e-bookmarks
-                 '("to:kharlan@isovera.com"           "Isovera"          ?i) t)
-
-    (setq
-       mu4e-compose-signature
-       (concat
-          "kostaharlan.net | @kostajh"))
+                 '("to:kosta@savaslabs.com"           "savas"          ?i) t)
 
     (add-hook 'mu4e-index-updated-hook
         (lambda ()
