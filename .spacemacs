@@ -1,167 +1,131 @@
-;;; core-dotspacemacs.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
-(defconst dotspacemacs-template-directory
-  (expand-file-name (concat spacemacs-core-directory "templates/"))
-  "Templates directory.")
+;; -*- mode: emacs-lisp -*-
+;; This file is loaded by Spacemacs at startup.
+;; It must be stored in your home directory.
 
-(defvar dotspacemacs-configuration-layer-path '()
-  "List of additional paths where to look for configuration layers.
-Paths must have a trailing slash (ie. `~/.mycontribs/')")
+;; Configuration Layers
+;; --------------------
 
-(defvar dotspacemacs-startup-banner 'random
-  "Specify the startup banner. If the value is an integer then the
-banner with the corresponding index is used, if the value is `random'
-then the banner is chosen randomly among the available banners, if
-the value is nil then no banner is displayed.")
+(setq-default
+ ;; List of additional paths where to look for configuration layers.
+ ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
+ dotspacemacs-configuration-layer-path '()
+ ;; List of configuration layers to load. If it is the symbol `all' instead
+ ;; of a list then all discovered layers will be installed.
+ dotspacemacs-configuration-layers '(kostajh
+                                     perspectives
+                                     php
+                                     python
+                                     html
+                                     company-mode
+                                     javascript
+                                     restclient
+                                     (git :variables
+                                         git-magit-status-fullscreen t
+                                         git-enable-github-support t
+                                         git-gutter-use-fringe t)
+                                     colors
+                                     )
+ ;; A list of packages and/or extensions that will not be install and loaded.
+ dotspacemacs-excluded-packages '(auto-complete ac-ispell flycheck-ledger tern-auto-complete auto-complete-clang enslime edts)
+ ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
+ ;; are declared in a layer which is not a member of
+ ;; the list `dotspacemacs-configuration-layers'
+ dotspacemacs-delete-orphan-packages t
+)
 
-(defvar dotspacemacs-configuration-layers '(kostajh
-                                            perspectives
-                                            php
-                                            python
-                                            html
-                                            company-mode
-                                            javascript
-                                            restclient
-                                            (git :variables
-                                                git-magit-status-fullscreen t
-                                                git-enable-github-support t
-                                                git-gutter-use-fringe t)
-                                            colors))
-  "List of configuration layers to load. If it is the symbol `all' instead
-of a list then all discovered layers will be installed."
+;; Settings
+;; --------
 
-(defvar dotspacemacs-themes '(solarized-light
-                              solarized-dark
-                              )
-  "List of themes, the first of the list is loaded when spacemacs starts.
-Press <SPC> T n to cycle to the next theme in the list (works great
-with 2 themes variants, one dark and one light")
+(setq-default
+ ;; Specify the startup banner. If the value is an integer then the
+ ;; banner with the corresponding index is used, if the value is `random'
+ ;; then the banner is chosen randomly among the available banners, if
+ ;; the value is nil then no banner is displayed.
+ dotspacemacs-startup-banner 'random
+ ;; List of themes, the first of the list is loaded when spacemacs starts.
+ ;; Press <SPC> T n to cycle to the next theme in the list (works great
+ ;; with 2 themes variants, one dark and one light)
+ dotspacemacs-themes '(solarized-dark
+                       solarized-light
+                       leuven
+                       monokai
+                       )
+ ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
+ ;; size to make separators look not too crappy.
+ dotspacemacs-default-font '("Source Code Pro"
+                             :size 13
+                             :weight normal
+                             :width normal
+                             :powerline-scale 1.1)
+ ;; The leader key
+ dotspacemacs-leader-key "SPC"
+ ;; Major mode leader key is a shortcut key which is the equivalent of
+ ;; pressing `<leader> m`
+ dotspacemacs-major-mode-leader-key ","
+ ;; The command key used for Evil commands (ex-commands) and
+ ;; Emacs commands (M-x).
+ ;; By default the command key is `:' so ex-commands are executed like in Vim
+ ;; with `:' and Emacs commands are executed with `<leader> :'.
+ dotspacemacs-command-key ":"
+ ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
+ ;; the commands bound to the current keystrokes.
+ dotspacemacs-guide-key-delay 0.4
+ ;; If non nil a progress bar is displayed when spacemacs is loading. This
+ ;; may increase the boot time on some systems and emacs builds, set it to nil
+ ;; to boost the loading time.
+ dotspacemacs-loading-progress-bar t
+ ;; Enable micro-state for helm buffer when pressing on TAB."
+ dotspacemacs-helm-micro-state t
+ ;; If non nil the frame is fullscreen when Emacs starts up (Emacs 24.4+ only).
+ dotspacemacs-fullscreen-at-startup t
+ ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
+ ;; Use to disable fullscreen animations in OSX."
+ dotspacemacs-fullscreen-use-non-native nil
+ ;; If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only).
+ ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
+ dotspacemacs-maximized-at-startup t
+ ;; A value from the range (0..100), in increasing opacity, which describes the
+ ;; transparency level of a frame when it's active or selected. Transparency can
+ ;; be toggled through `toggle-transparency'.
+ dotspacemacs-active-transparency 90
+ ;; A value from the range (0..100), in increasing opacity, which describes the
+ ;; transparency level of a frame when it's inactive or deselected. Transparency
+ ;; can be toggled through `toggle-transparency'.
+ dotspacemacs-inactive-transparency 90
+ ;; If non nil unicode symbols are displayed in the mode line (e.g. for lighters)
+ dotspacemacs-mode-line-unicode-symbols t
+ ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth scrolling
+ ;; overrides the default behavior of Emacs which recenters the point when
+ ;; it reaches the top or bottom of the screen
+ dotspacemacs-smooth-scrolling t
+ ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
+ dotspacemacs-smartparens-strict-mode t
+ ;; If non nil advises quit functions to keep server open when quitting.
+ dotspacemacs-persistent-server t
+ ;; The default package repository used if no explicit repository has been
+ ;; specified with an installed package.
+ ;; Not used for now.
+ dotspacemacs-default-package-repository nil
+ )
 
-(defvar dotspacemacs-leader-key "SPC"
-  "The leader key.")
+;; Initialization Hooks
+;; --------------------
 
-(defvar dotspacemacs-major-mode-leader-key ","
-  "Major mode leader key is a shortcut key which is the equivalent of
-pressing `<leader> m`")
+(defun dotspacemacs/init ()
+  "User initialization for Spacemacs. This function is called at the very
+ startup."
+  )
 
-(defvar dotspacemacs-default-font '("M+ 1m Regular"
-                                    :size 13
-                                    :weight normal
-                                    :width normal
-                                    :powerline-scale 1.1)
-  "Default font. `powerline-scale' allows to quickly tweak the mode-line
-size to make separators look not too crappy.")
+(defun dotspacemacs/config ()
+  "This is were you can ultimately override default Spacemacs configuration.
+This function is called at the very end of Spacemacs initialization."
+)
 
-(defvar dotspacemacs-command-key ":"
-  "The key used for Evil commands (ex-commands) and Emacs commands (M-x).
-By default the command key is `:' so ex-commands are executed like in Vim
-with `:' and Emacs commands are executed with `<leader> :'.")
+;; Custom variables
+;; ----------------
 
-(defvar dotspacemacs-guide-key-delay 0.4
-  "Guide-key delay in seconds.")
-
-(defvar dotspacemacs-loading-progress-bar t
-  "If non nil a progress bar is displayed when spacemacs is loading. This
-may increase the boot time on some systems and emacs builds, set it to nil
-to boost the loading time.")
-
-(defvar dotspacemacs-helm-micro-state t
-  "Enable micro-state for helm buffer when pressing on TAB.")
-
-(defvar dotspacemacs-fullscreen-at-startup t
-  "If non nil the frame is fullscreen when Emacs starts up (Emacs 24.4+ only).")
-
-(defvar dotspacemacs-fullscreen-use-non-native nil
-  "If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen. Use
-to disable fullscreen animations in OSX.")
-
-(defvar dotspacemacs-maximized-at-startup nil
-  "If non nil the frame is maximized when Emacs starts up (Emacs 24.4+ only).
-Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.")
-
-(defvar dotspacemacs-active-transparency 90
-  "A value from the range (0..100), in increasing opacity, which describes the
-transparency level of a frame when it's active or selected. Transparency
-can be toggled through `toggle-transparency'.")
-
-(defvar dotspacemacs-inactive-transparency 90
-  "A value from the range (0..100), in increasing opacity, which describes the
-transparency level of a frame when it's inactive or deselected. Transparency
-can be toggled through `toggle-transparency'.")
-
-(defvar dotspacemacs-mode-line-unicode-symbols t
-  "If non nil unicode symbols are displayed in the mode-line (eg. for lighters)")
-
-(defvar dotspacemacs-smooth-scrolling t
-  "If non nil smooth scrolling (native-scrolling) is enabled. Smooth scrolling
-overrides the default behavior of Emacs which recenters the point when
-it reaches the top or bottom of the screen.")
-
-(defvar dotspacemacs-persistent-server t
-  "If non nil advises quit functions to keep server open when quitting.")
-
-(defvar dotspacemacs-smartparens-strict-mode nil
-  "If non-nil smartparens-strict-mode will be enabled in programming modes.")
-
-(defvar dotspacemacs-delete-orphan-packages t
-  "If non-nil spacemacs will delete any orphan packages, i.e. packages that are
-declared in a layer which is not a member of
- `dotspacemacs-configuration-layers'")
-
-(defvar dotspacemacs-default-package-repository 'melpa-stable
-  "The default package repository used if no explicit repository has been
-specified with an installed package.
-NOT USED FOR NOW :-)")
-
-(defvar dotspacemacs-excluded-packages '(auto-complete
-                                         ac-ispell
-                                         flycheck-ledger
-                                         tern-auto-complete
-                                         auto-complete-clang
-                                         enslime
-                                         edts)
-  "A list of packages and/or extensions that will not be install and loaded.")
-
-(defun dotspacemacs/location ()
-  "Return the absolute path to the spacemacs dotfile."
-  (concat user-home-directory ".spacemacs"))
-
-(defun dotspacemacs/install ()
-  "Install `.spacemacs.template' in home directory. Ask for confirmation
-before installing the file if the destination already exists."
-  (interactive)
-  (let* ((dotfile "~/.spacemacs")
-         (install (if (file-exists-p dotfile)
-                      (y-or-n-p (format "%s already exists. Do you want to overwite it ? "
-                                        dotfile))
-                    t)))
-    (when install
-      (copy-file (concat dotspacemacs-template-directory
-                         ".spacemacs.template") dotfile t)
-      (message "%s has been installed." dotfile))))
-
-(defun dotspacemacs/load ()
-  "Load ~/.spacemacs if it exists."
-  (let ((dotspacemacs (dotspacemacs/location)))
-    (if (file-exists-p dotspacemacs) (load dotspacemacs))))
-
-(defmacro dotspacemacs|call-func (func &optional msg)
-  "Call the function from the dotfile only if it is bound.
-If MSG is not nil then display a message in `*Messages'."
-  `(progn
-     (when ,msg (spacemacs/message ,msg))
-     (if (fboundp ',func) (,func))))
-
-(provide 'core-dotspacemacs)
+;; Do not write anything in this section. This is where Emacs will
+;; auto-generate custom variable definitions.
 
 ;; Custom variables
 (custom-set-variables
@@ -194,15 +158,27 @@ If MSG is not nil then display a message in `*Messages'."
      (company-oddmuse :with company-yasnippet)
      (company-files :with company-yasnippet)
      (company-dabbrev :with company-yasnippet))))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(elfeed-feeds (quote ("https://www.drupal.org/planet/rss.xml")))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
  '(gnutls-min-prime-bits 1024)
- '(haskell-notify-p t)
- '(haskell-process-type (quote cabal-dev))
- '(haskell-stylish-on-save t)
- '(haskell-tags-on-save t)
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(if (version< emacs-version "24.4"))
  '(jabber-account-list
    (quote
     (("kostajh@gmail.com"
@@ -219,22 +195,20 @@ If MSG is not nil then display a message in `*Messages'."
  '(linum-delay t)
  '(linum-eager nil)
  '(magit-diff-use-overlays nil)
- '(magit-use-overlays nil)
- '(markdown-command "pandoc")
- '(org-babel-load-languages (quote ((emacs-lisp . t) (sh . t) (python . t))))
+ '(mu4e-compose-dont-reply-to-self t)
  '(org-clock-clocked-in-display (quote frame-title))
  '(org-clock-out-remove-zero-time-clocks t)
- '(paradox-github-token t)
- '(php-manual-path "~/docs/php")
- '(php-mode-coding-style (quote psr2))
- '(psysh-debug-bin-path "/home/kosta/.composer/vendor/bin/psysh")
+ '(pos-tip-background-color "#073642" t)
+ '(pos-tip-foreground-color "#93a1a1" t)
  '(rcirc-authenticate-before-join t)
  '(rcirc-default-nick "kostajh")
  '(ring-bell-function (quote ignore) t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(vc-follow-symlinks nil)
  '(visible-bell t))
  '(ring-bell-function (quote ignore) t)
- '(send-mail-function (quote sendmail-send-it))
+ '(send-mail-function (quote sendmail-send-it)
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
