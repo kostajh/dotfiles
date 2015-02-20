@@ -24,9 +24,6 @@ alias detect_displays="bash ~/src/dotfiles/detect_displays.sh"
 alias eclimd="/home/kosta/.eclipse/org.eclipse.platform_646169614_linux_gtk_x86_64/eclimd"
 alias refactor="php /home/kosta/bin/refactor.phar"
 
-# Vim
-alias vim='gvim -v'
-
 export EDITOR='emacsclient -t'
 
 alias laravel="/home/kosta/bin/laravel"
