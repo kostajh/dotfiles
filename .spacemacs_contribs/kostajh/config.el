@@ -4,7 +4,14 @@
                '("marmalade" . "https://marmalade-repo.org/packages/"))
 
 ;; Linum
-(add-hook 'prog-mode-hook 'linum-mode)
+;; (add-hook 'prog-mode-hook 'linum-mode)
+
+(defun kostajh-org-clock-in ()
+  ;; Look up Harvest project from filename org task property
+  (shell-command "notify-send 'hello'")
+)
+
+(add-hook 'org-clock-in-hook 'kostajh-org-clock-in)
 
 ;; Enable flycheck for the following modes
 (dolist (mode '(php
@@ -16,9 +23,12 @@
             'flycheck-mode))
 
 ;; Org
+(setq org-src-fontify-natively t)
+(setq jiralib-url "https://savasco.atlassian.net")
 (setq org-directory "~/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-agenda-files (quote ("~/org"
+                               "~/.org-jira"
                                "~/org/notes"
                                "~/org/unc"
                                "~/org/pacmat"
@@ -45,10 +55,10 @@
 (org-clock-persistence-insinuate)
 
 ; Auto-save buffers
-(add-hook 'org-agenda-mode-hook
-          (lambda ()
-            (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
-            (auto-save-mode)))
+;; (add-hook 'org-agenda-mode-hook
+;;           (lambda ()
+;;             (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+;;             (auto-save-mode)))
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
@@ -85,7 +95,7 @@
               ("MEETING" :foreground "#859900" :weight bold)
               ("PHONE" :foreground "#859900" :weight bold))))
 
-(add-hook 'org-mode-hook 'auto-save-mode)
+;; (add-hook 'org-mode-hook 'auto-save-mode)
 
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
@@ -119,7 +129,7 @@
         mu4e-trash-folder  "/INBOX.Trash"      ;; trashed messages
         mu4e-refile-folder "/INBOX.Archive"   ;; saved messages
         mu4e-get-mail-command "offlineimap -q"
-        mu4e-update-interval 900
+        mu4e-update-interval 120 
     )
 
     (defun no-auto-fill ()
@@ -193,8 +203,18 @@
             (setq truncate-lines t)
             (setq word-wrap t)))
 
-;; Backups
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; Org present
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))

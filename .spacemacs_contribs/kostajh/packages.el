@@ -22,12 +22,16 @@
     ggtags
     helm-ag
     jabber
+    org-jira
     php-extras
     php-auto-yasnippets
+    notify
+    rcirc-notify
     syslog-mode
     twittering-mode
     yaml-mode
     org-cliplink
+    org-present
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
