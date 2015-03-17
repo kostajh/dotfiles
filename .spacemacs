@@ -13,6 +13,10 @@
  ;; of a list then all discovered layers will be installed.
  dotspacemacs-configuration-layers '(kostajh
                                      perspectives
+                                     markdown
+                                     floobits
+                                     rcirc
+                                     dockerfile
                                      php
                                      python
                                      html
@@ -23,7 +27,7 @@
                                          git-magit-status-fullscreen t
                                          git-enable-github-support t
                                          git-gutter-use-fringe t)
-                                     colors
+                                    (colors :variables colors-enable-rainbow-identifiers t)
                                      )
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '(auto-complete ac-ispell flycheck-ledger tern-auto-complete auto-complete-clang enslime edts)
@@ -49,6 +53,7 @@
                        solarized-light
                        leuven
                        monokai
+                       zenburn
                        )
  ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
@@ -140,6 +145,8 @@ This function is called at the very end of Spacemacs initialization."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(company-backends
    (quote
     ((company-tern :with company-yasnippet)
@@ -165,7 +172,7 @@ This function is called at the very end of Spacemacs initialization."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
+    ("cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
  '(gnutls-min-prime-bits 1024)
  '(highlight-symbol-colors
    (--map
@@ -182,8 +189,7 @@ This function is called at the very end of Spacemacs initialization."
  '(if (version< emacs-version "24.4"))
  '(jabber-account-list
    (quote
-    (("kostajh@gmail.com"
-      (:network-server . "talk.google.com"))
+    (("kostajh@gmail.com")
      ("115486_1191911@chat.hipchat.com"
       (:network-server . "chat.hipchat.com")
       (:port . 5222)))))
@@ -196,16 +202,24 @@ This function is called at the very end of Spacemacs initialization."
  '(linum-delay t)
  '(linum-eager nil)
  '(magit-diff-use-overlays nil)
+ '(magit-use-overlays nil)
  '(mu4e-compose-dont-reply-to-self t)
- '(org-clock-clocked-in-display (quote frame-title))
+ '(mu4e-compose-signature-auto-include nil)
+ '(org-clock-clocked-in-display (quote both))
  '(org-clock-out-remove-zero-time-clocks t)
- '(pos-tip-background-color "#073642" t)
- '(pos-tip-foreground-color "#93a1a1" t)
+ '(org-clock-sound t)
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-crypt org-docview org-gnus org-habit org-id org-info org-inlinetask org-irc org-mhe org-rmail org-w3m)))
+ '(org-show-notification-handler "notify-send")
+ '(paradox-github-token t)
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
  '(rcirc-authenticate-before-join t)
  '(rcirc-default-nick "kostajh")
  '(ring-bell-function (quote ignore) t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
- '(vc-follow-symlinks nil)
+ '(vc-follow-symlinks t)
  '(visible-bell t))
  '(ring-bell-function (quote ignore) t)
  '(send-mail-function (quote sendmail-send-it)
@@ -225,4 +239,5 @@ This function is called at the very end of Spacemacs initialization."
  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
  '(outline-1 ((t (:inherit org-level-1 :height 1.0))))
  '(outline-2 ((t (:inherit org-level-2 :height 1.0))))
- '(outline-3 ((t (:inherit org-level-3 :height 1.0)))))
+ '(outline-3 ((t (:inherit org-level-3 :height 1.0))))
+ '(outline-4 ((t (:inherit org-level-4 :height 1.0)))))

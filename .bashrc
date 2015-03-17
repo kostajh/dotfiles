@@ -81,6 +81,8 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 . /home/kosta/.composer/vendor/drush/drush/drush.complete.sh 
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.composer/vendor/techlivezheng/phpctags:$PATH
+export PATH=$PATH:$GOPATH/bin
 export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=localhost remote_port=9000"
 export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+
 eval $(dircolors -b $HOME/.dircolors)
