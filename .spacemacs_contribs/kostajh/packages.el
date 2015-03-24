@@ -18,13 +18,18 @@
     deft
     drupal-mode
     edit-server
+    fabric
     feature-mode
     ggtags
     helm-ag
+    helm-spotify
     jabber
     org-jira
+    password-store
+    phpcbf
     php-extras
     php-auto-yasnippets
+    phpunit
     notify
     rcirc-notify
     syslog-mode
@@ -45,9 +50,11 @@ which require an initialization must be listed explicitly in the list.")
   "Initialize my package"
   (use-package php-extras
     :defer t
-    :mode ("\\.php\\'" . php-mode)
-    )
-  )
+    :mode ("\\.php\\'" . php-mode)))
+
+(defun kostajh/init-drupal-mode()
+  (use-package drupal-mode
+    :defer t))
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
