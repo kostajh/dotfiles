@@ -5,7 +5,8 @@
 ;; Configuration Layers
 ;; --------------------
 
-(setq-default
+(defun dotspacemacs/layers ()
+ (setq-default
  ;; List of additional paths where to look for configuration layers.
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
@@ -15,7 +16,8 @@
                                      perspectives
                                      markdown
                                      floobits
-                                     rcirc
+                                     (rcirc :variables
+                                            rcirc-enable-authinfo-support t)
                                      dockerfile
                                      php
                                      python
@@ -34,18 +36,18 @@
  ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
  ;; are declared in a layer which is not a member of
  ;; the list `dotspacemacs-configuration-layers'
- dotspacemacs-delete-orphan-packages t
-)
+ dotspacemacs-delete-orphan-packages t))
 
 ;; Settings
 ;; --------
 
-(setq-default
+(defun dotspacemacs/init ()
+ (setq-default
  ;; Specify the startup banner. If the value is an integer then the
  ;; banner with the corresponding index is used, if the value is `random'
  ;; then the banner is chosen randomly among the available banners, if
  ;; the value is nil then no banner is displayed.
- dotspacemacs-startup-banner 'random
+ dotspacemacs-startup-banner 'official
  ;; List of themes, the first of the list is loaded when spacemacs starts.
  ;; Press <SPC> T n to cycle to the next theme in the list (works great
  ;; with 2 themes variants, one dark and one light)
@@ -63,6 +65,7 @@
                              :width normal
                              :slant normal
                              :powerline-scale 1.1)
+ dotspacemacs-colorize-cursor-according-to-state t
  ;; The leader key
  dotspacemacs-leader-key "SPC"
  ;; Major mode leader key is a shortcut key which is the equivalent of
@@ -82,6 +85,9 @@
  dotspacemacs-loading-progress-bar t
  ;; Enable micro-state for helm buffer when pressing on TAB."
  dotspacemacs-helm-micro-state t
+ ;; If non nil the paste micro-state is enabled. While enabled pressing `p`
+ ;; several times cycle between the kill ring content.
+ dotspacemacs-enable-paste-micro-state t
  ;; If non nil the frame is fullscreen when Emacs starts up (Emacs 24.4+ only).
  dotspacemacs-fullscreen-at-startup t
  ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
@@ -105,26 +111,22 @@
  ;; it reaches the top or bottom of the screen
  dotspacemacs-smooth-scrolling t
  ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
- dotspacemacs-smartparens-strict-mode t
+ dotspacemacs-smartparens-strict-mode nil
  ;; If non nil advises quit functions to keep server open when quitting.
- dotspacemacs-persistent-server t
+ dotspacemacs-persistent-server nil
  ;; The default package repository used if no explicit repository has been
  ;; specified with an installed package.
  ;; Not used for now.
- dotspacemacs-default-package-repository nil
- )
-
-;; Initialization Hooks
-;; --------------------
-
-(defun dotspacemacs/init ()
-  "User initialization for Spacemacs. This function is called at the very
- startup."
-  )
+ dotspacemacs-default-package-repository nil))
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
+  (setq rcirc-server-alist
+  '(("irc.freenode.net"
+      :user "kostajh"
+      :port "1337"
+      :channels ("#drush"))))
 )
 
 ;; Custom variables
@@ -166,6 +168,7 @@ This function is called at the very end of Spacemacs initialization."
      (company-oddmuse :with company-yasnippet)
      (company-files :with company-yasnippet)
      (company-dabbrev :with company-yasnippet))))
+ '(confirm-kill-emacs (quote yes-or-no-p))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
@@ -173,6 +176,7 @@ This function is called at the very end of Spacemacs initialization."
  '(custom-safe-themes
    (quote
     ("cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
+ '(emacs-lock-default-locking-mode nil)
  '(gnutls-min-prime-bits 1024)
  '(highlight-symbol-colors
    (--map
@@ -213,6 +217,7 @@ This function is called at the very end of Spacemacs initialization."
     (org-bbdb org-bibtex org-crypt org-docview org-gnus org-habit org-id org-info org-inlinetask org-irc org-mhe org-rmail org-w3m)))
  '(org-show-notification-handler "notify-send")
  '(paradox-github-token t)
+ '(phpunit-program "/home/kosta/src/mitpress/bin/phpunit")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(rcirc-authenticate-before-join t)
