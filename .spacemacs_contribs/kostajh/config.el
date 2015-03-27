@@ -3,6 +3,79 @@
 (add-to-list 'package-archives
                '("marmalade" . "https://marmalade-repo.org/packages/"))
 
+;;(elfeed-org)
+
+;; Perspectives
+(defun custom-persp/mu4e ()
+  (interactive)
+  (custom-persp "mu4e" (progn
+                         (mu4e)
+                         )))
+
+(evil-leader/set-key "Lom" 'custom-persp/mu4e)
+
+(defun custom-persp/twit ()
+  (interactive)
+  (custom-persp "twit" (progn
+                         (twit)
+                         (twittering-icon-mode)
+                         (twittering-search "durham")
+                         (split-window-right)
+                         (twittering-icon-mode)
+                         ))
+  )
+(evil-leader/set-key "Lot" 'custom-persp/twit)
+
+(defun custom-persp/code ()
+  (interactive)
+  (custom-persp "code" (progn
+                         (multi-term)
+                         (evil-emacs-state)
+                         (split-window-below -8)
+                         (dired "~/src")
+                         ))
+  )
+(evil-leader/set-key "Loc" 'custom-persp/code)
+
+(defun custom-persp/sx ()
+  (interactive)
+  (custom-persp "sx" (progn
+                       (sx-search)
+                       )))
+(evil-leader/set-key "Lox" 'custom-persp/sx)
+
+(defun custom-persp/shell ()
+  (interactive)
+  (custom-persp "shell"
+                (progn
+                (multi-term)
+                (evil-emacs-state)
+                (split-window-below)
+                (multi-term)
+                (evil-emacs-state)
+                )))
+(evil-leader/set-key "Los" 'custom-persp/shell)
+
+(defun custom-persp/elfeed ()
+  (interactive)
+  (custom-persp "elfeed" (progn
+                           (elfeed)
+                           (elfeed-update)
+                           )))
+(evil-leader/set-key "Lof" 'custom-persp/elfeed)
+
+(defun custom-persp/deft ()
+  (interactive)
+  (custom-persp "deft" (progn
+                         (deft)
+                         )))
+(evil-leader/set-key "Lod" 'custom-persp/deft)
+
+(add-hook 'php-mode-hook
+    (lambda ()
+        (set (make-local-variable 'company-backends)
+            '((company-yasnippet company-gtags company-capf company-dabbrev-code company-keywords company-files php-extras-company)))))
+
 ;; Source: http://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html
 (defun kostajh/add-PR-fetch ()
   "If refs/pull is not defined on a GH repo, define it."
@@ -71,6 +144,7 @@
     "Log times in Harvest."
     (interactive)
     (helm :sources '(helm-source-harvest-task-search)
+          :prompt "Task: "
     :buffer "*helm-harvest*"))
 
 (add-hook 'org-clock-in-hook 'kostajh-org-clock-in)
@@ -223,8 +297,7 @@
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types))
-    ;; (setq mu4e-html2text-command "pandoc -f html -t markdown --columns=72")
-    (require 'mu4e-contrib) 
+    (require 'mu4e-contrib)
     (setq mu4e-html2text-command 'mu4e-shr2text)
 
     (setq message-kill-buffer-on-exit t)

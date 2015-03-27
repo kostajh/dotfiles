@@ -18,12 +18,15 @@
     deft
     drupal-mode
     edit-server
+    elfeed
+    elfeed-org
     fabric
     feature-mode
     ggtags
     helm-ag
     helm-spotify
     jabber
+    material-theme
     org-jira
     password-store
     phpcbf
@@ -32,6 +35,7 @@
     phpunit
     notify
     rcirc-notify
+    sx
     syslog-mode
     twittering-mode
     yaml-mode
@@ -55,6 +59,7 @@ which require an initialization must be listed explicitly in the list.")
 (defun kostajh/init-drupal-mode()
   (use-package drupal-mode
     :defer t))
+
 ;;
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
