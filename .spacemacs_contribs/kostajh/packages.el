@@ -16,23 +16,18 @@
     ag
     apache-mode
     deft
-    drupal-mode
     edit-server
     elfeed
     elfeed-org
     fabric
     feature-mode
-    ggtags
     helm-ag
+    helm-gtags
     helm-spotify
     jabber
     material-theme
     org-jira
     password-store
-    phpcbf
-    php-extras
-    php-auto-yasnippets
-    phpunit
     notify
     rcirc-notify
     sx
@@ -50,14 +45,8 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function kostajh/init-<package-kostajh>
 ;;
-(defun kostajh/init-php-extras ()
-  "Initialize my package"
-  (use-package php-extras
-    :defer t
-    :mode ("\\.php\\'" . php-mode)))
-
-(defun kostajh/init-drupal-mode()
-  (use-package drupal-mode
+(defun kostajh/init-helm-gtags ()
+  (use-package helm-gtags
     :defer t))
 
 ;;

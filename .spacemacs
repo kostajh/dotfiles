@@ -16,6 +16,9 @@
  dotspacemacs-configuration-layers '(kostajh
                                      perspectives
                                      markdown
+                                     org
+                                     (auto-completion :variables
+                                                      auto-completion-enable-company-help-tooltip t)
                                      floobits
                                      c-c++
                                      (rcirc :variables
@@ -25,6 +28,7 @@
                                      python
                                      html
                                      company-mode
+                                     syntax-checking
                                      javascript
                                      restclient
                                      (git :variables
@@ -59,8 +63,6 @@
  ;; with 2 themes variants, one dark and one light)
  dotspacemacs-themes '(solarized-dark
                        solarized-light
-                       leuven
-                       monokai
                        )
  ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
@@ -179,7 +181,7 @@ This function is called at the very end of Spacemacs initialization."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("88936c6bb71bc7d4dd45f260a5a7df40cc3ed059efe0179f50530e3823b944a4" "cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "88936c6bb71bc7d4dd45f260a5a7df40cc3ed059efe0179f50530e3823b944a4" "cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "b69df114abdbbf223e1ad2c98ad1abee04ac2a5070aeb8b7ceefcf00aa5e43f8" default)))
  '(emacs-lock-default-locking-mode nil)
  '(evil-emacs-state-modes
    (quote

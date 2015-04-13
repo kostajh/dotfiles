@@ -1,4 +1,3 @@
-(require 'org-install)
 (require 'ob-tangle)
 (add-to-list 'package-archives
                '("marmalade" . "https://marmalade-repo.org/packages/"))
@@ -71,10 +70,6 @@
                          )))
 (evil-leader/set-key "Lod" 'custom-persp/deft)
 
-(add-hook 'php-mode-hook
-    (lambda ()
-        (set (make-local-variable 'company-backends)
-            '((company-yasnippet company-gtags company-capf company-dabbrev-code company-keywords company-files php-extras-company)))))
 
 ;; Source: http://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html
 (defun kostajh/add-PR-fetch ()
@@ -237,11 +232,6 @@
 ;; Programming hooks
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 ;; (add-hook 'prog-mode-hook 'ggtags-mode)
-
-;; PHP hooks
-;; (add-hook 'php-mode-hook 'ggtags-mode)
-(add-hook 'php-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'php-mode-hook 'setq-local eldoc-documentation-function #'ggtags-eldoc-function)
 
 ;; @see https://github.com/arnested/drupal-mode/issues/48
 ;;(add-hook 'drupal-mode-hook 'setq drupal-get-function-args t)
