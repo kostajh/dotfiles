@@ -329,6 +329,11 @@
             (setq truncate-lines t)
             (setq word-wrap t)))
 
+(add-hook 'drupal-mode
+          (lambda()
+            (setq browse-url-browser-function (quote eww-browse-url))
+          ))
+
 ;; Org present
 (eval-after-load "org-present"
   '(progn

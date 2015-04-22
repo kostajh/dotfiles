@@ -10,7 +10,7 @@
 ;;
 ;;; License: GPLv3
 
-(defvar kostajh-packages
+(setq kostajh-packages
   '(
     ;; package kostajhs go here
     ag
@@ -21,6 +21,7 @@
     elfeed-org
     fabric
     feature-mode
+    hackernews
     helm-ag
     helm-gtags
     helm-spotify
@@ -35,12 +36,10 @@
     yaml-mode
     org-cliplink
     org-present
-    )
-  "List of all packages to install and/or initialize. Built-in packages
-which require an initialization must be listed explicitly in the list.")
+    ))
 
-(defvar kostajh-excluded-packages '()
-  "List of packages to exclude.")
+(setq kostajh-excluded-packages '()
+      )
 
 ;; For each package, define a function kostajh/init-<package-kostajh>
 ;;
@@ -50,6 +49,10 @@ which require an initialization must be listed explicitly in the list.")
 
 (defun kostajh/init-deft()
   (use-package deft
+    :defer t))
+
+(defun kostajh/init-hackernews()
+  (use-package hackernews
     :defer t))
 
 (defun kostajh/init-password-store()
