@@ -29,7 +29,6 @@
     org-jira
     password-store
     notify
-    rcirc-notify
     sx
     syslog-mode
     twittering-mode
@@ -45,8 +44,16 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function kostajh/init-<package-kostajh>
 ;;
-(defun kostajh/init-helm-gtags ()
-  (use-package helm-gtags
+(defun kostajh/init-twittering-mode()
+  (use-package twittering-mode
+    :defer t))
+
+(defun kostajh/init-deft()
+  (use-package deft
+    :defer t))
+
+(defun kostajh/init-password-store()
+  (use-package password-store
     :defer t))
 
 ;;

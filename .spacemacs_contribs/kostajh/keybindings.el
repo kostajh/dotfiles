@@ -3,11 +3,10 @@
 ;; Copyright (C) 2015  Kosta Harlan
 
 ;; Author: Kosta Harlan <kosta@kostaharlan.net>
-;; Keywords: 
+;; Keywords:
 
 (global-set-key [f11] 'mu4e)
 (global-set-key [f8] 'deft)
-(global-set-key (kbd "C-c t e m") 'evil-mode)
 
 ;; Org
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -15,23 +14,6 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "<f12>") 'org-agenda)
-
-(evil-leader/set-key
-  "oc" 'org-capture
-  "oa" 'org-agenda
-  "ob" 'org-iswitchb
-  "oi" 'org-clock-in
-  "oo" 'org-clock-out
-  )
-
-;; ggtags bindings
-(evil-leader/set-key
-   "ggv" 'ggtags-find-tag-dwim
-   "ggd" 'ggtags-find-definition
-   "ggr" 'ggtags-find-reference
-   "ggp" 'ggtags-prev-mark
-   "ggn" 'ggtags-next-mark
-   )
 
 ;; jabber bindings
 (evil-leader/set-key
