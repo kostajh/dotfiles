@@ -119,9 +119,9 @@
         ;; TODO: Get time from org task
         (let ((time_logged (read-from-minibuffer "Time: ")))
         (let ((command (format "hcl log %d %d +%s %s" (string-to-number project_id) (string-to-number task_id) time_logged task_description)))
-        (shell-command command)
+        (async-shell-command command)
         ;; TODO: Prompt to archive task.
-        (shell-command "notify-send 'harvest' 'Logged time!'"))))))))
+        (async-shell-command "notify-send 'harvest' 'Logged time!'"))))))))
 
 (defun harvest-status()
   (switch-to-buffer-other-window "*harvest-status*")
