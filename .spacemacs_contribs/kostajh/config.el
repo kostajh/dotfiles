@@ -349,3 +349,11 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))))
+
+(load-file "~/.emacs.d/.irc.el")
+
+(evil-leader/set-key
+    "aif" 'kostajh-irc-freenode
+    "ais" 'kostajh-irc-slack)
+
+
