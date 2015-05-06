@@ -181,6 +181,7 @@ This function is called at the very end of Spacemacs initialization."
      (company-oddmuse :with company-yasnippet)
      (company-files :with company-yasnippet)
      (company-dabbrev :with company-yasnippet))))
+ '(compilation-message-face (quote default))
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
@@ -254,6 +255,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-clock-clocked-in-display (quote both))
  '(org-clock-out-remove-zero-time-clocks t)
  '(org-clock-sound t)
+ '(org-columns-default-format "%25ITEM %TODO %3PRIORITY %TAGS %Effort %CLOCKSUM_T")
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-crypt org-docview org-gnus org-habit org-id org-info org-inlinetask org-irc org-mhe org-rmail org-w3m)))
@@ -262,12 +264,15 @@ This function is called at the very end of Spacemacs initialization."
  '(phpunit-program "/home/kosta/src/mitpress/bin/phpunit")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
- '(rcirc-authenticate-before-join t)
- '(rcirc-default-nick "kostajh")
  '(ring-bell-function (quote ignore) t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
  '(vc-follow-symlinks t)
- '(visible-bell t))
+ '(visible-bell t)
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))))
  '(ring-bell-function (quote ignore) t)
  '(send-mail-function (quote sendmail-send-it)
  )
