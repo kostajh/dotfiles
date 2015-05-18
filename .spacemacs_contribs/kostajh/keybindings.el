@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "<f12>") 'org-agenda)
 
+(global-set-key (kbd "C-x C-u") 'company-complete)
 ;; jabber bindings
 (evil-leader/set-key
   "jl" 'jabber-activity-switch-to

@@ -78,13 +78,13 @@ export LANG=en_US.UTF-8
 # alias pstorm="nohup /bin/bash /home/kosta/PHPStorm/bin/phpstorm.sh &"
 export PATH=$HOME/.composer/vendor/bin:$PATH
 # Drush completion.
-. /home/kosta/.composer/vendor/drush/drush/drush.complete.sh 
+. /home/kosta/.composer/vendor/drush/drush/drush.complete.sh
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.composer/vendor/techlivezheng/phpctags:$PATH
 export PATH=$PATH:$GOPATH/bin
 export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=localhost remote_port=9000"
 export PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
-
+export LEDGER_FILE=/mnt/data/ownCloud/documents/ledger/ledger.txt
 eval $(dircolors -b $HOME/.dircolors)
 
 # added by travis gem

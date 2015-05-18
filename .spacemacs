@@ -16,9 +16,11 @@
  dotspacemacs-configuration-layers '(kostajh
                                      perspectives
                                      markdown
+                                     dash
                                      org
                                      extra-langs
                                      (auto-completion :variables
+                                                      auto-completion-complete-with-key-sequence "jk"
                                                       auto-completion-enable-company-help-tooltip t)
                                      floobits
                                      gtags
@@ -30,6 +32,7 @@
                                      pandoc
                                      python
                                      html
+                                     finance
                                      syntax-checking
                                      javascript
                                      restclient
@@ -54,7 +57,7 @@
  (setq-default
  ;; Specify the startup banner. If the value is an integer then the
  ;; banner with the corresponding index is used, if the value is `random'
- ;; then the banner is chosen randomly among the available banners, if
+ ;; then the banner is chosen rando
  ;; the value is nil then no banner is displayed.
  dotspacemacs-startup-banner 'official
  ;; List of themes, the first of the list is loaded when spacemacs starts.
@@ -65,7 +68,7 @@
                        )
  ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
- dotspacemacs-default-font '("M+ 1m"
+ dotspacemacs-default-font '("Office Code Pro"
                              :size 13
                              :weight normal
                              :width normal
@@ -154,7 +157,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-ispell-requires 4 t)
+ '(ac-ispell-requires 4)
  '(ahs-case-fold-search nil)
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-idle-interval 0.25)
@@ -210,6 +213,8 @@ This function is called at the very end of Spacemacs initialization."
  '(expand-region-contract-fast-key "V")
  '(expand-region-reset-fast-key "r")
  '(gnutls-min-prime-bits 1024)
+ '(helm-dash-browser-func (quote browse-url))
+ '(helm-dash-docsets-path "/home/kosta/.docsets")
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -261,7 +266,6 @@ This function is called at the very end of Spacemacs initialization."
     (org-bbdb org-bibtex org-crypt org-docview org-gnus org-habit org-id org-info org-inlinetask org-irc org-mhe org-rmail org-w3m)))
  '(org-show-notification-handler "notify-send")
  '(paradox-github-token t)
- '(phpunit-program "/home/kosta/src/mitpress/bin/phpunit")
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(ring-bell-function (quote ignore) t)

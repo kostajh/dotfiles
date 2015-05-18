@@ -27,7 +27,6 @@
     helm-spotify
     jabber
     material-theme
-    org-jira
     password-store
     notify
     sx
@@ -57,6 +56,18 @@
 
 (defun kostajh/init-password-store()
   (use-package password-store
+    :defer t))
+
+(defun kostajh/init-sx ()
+  (use-package sx
+    :defer t))
+
+(defun kostajh/init-elfeed ()
+  (use-package elfeed
+    :defer t))
+
+(defun kostajh/init-elfeed-org ()
+  (use-package elfeed-org
     :defer t))
 
 ;;

@@ -9,9 +9,18 @@
   (interactive)
   (custom-persp "mu4e" (progn
                          (mu4e)
+                         (add-hook 'mu4e-compose-mode 'company-mode-on)
                          )))
-
 (evil-leader/set-key "Lom" 'custom-persp/mu4e)
+
+(defun custom-persp/ledger ()
+  (interactive)
+  (custom-persp "ledger" (progn
+                           (find-file "/mnt/data/ownCloud/documents/ledger/ledger.txt")
+                           (flycheck-mode)
+                           )))
+(evil-leader/set-key "Lol" 'custom-persp/ledger)
+
 
 (defun custom-persp/twit ()
   (interactive)
@@ -90,11 +99,13 @@
 (defun kostajh-org-clock-in ()
   ;; Look up Harvest project from filename org task property
   ;; (async-shell-command "hcl")
-  (shell-command "notify-send 'org-mode' 'Clocked in'"))
+  ;; (shell-command "notify-send 'org-mode' 'Clocked in'")
+  )
 
 (defun kostajh-org-clock-out ()
   ;; (async-shell-command "hcl")
-  (shell-command "notify-send 'org-mode' 'Clocked out'"))
+  ;; (shell-command "notify-send 'org-mode' 'Clocked out'")
+  )
 
 (defun helm-harvest-search ()
   (defun slurp (f)
@@ -295,10 +306,11 @@
     (add-to-list 'mu4e-bookmarks
                  '("to:kosta@savaslabs.com"           "savas"          ?i) t)
 
-    (add-hook 'mu4e-index-updated-hook
-        (lambda ()
-          (shell-command (concat "/home/kosta/src/dotfiles/youve_got_mail.sh "
-               (number-to-string mu4e-update-interval)))))))
+    ;; (add-hook 'mu4e-index-updated-hook
+    ;;     (lambda ()
+    ;;       (shell-command (concat "/home/kosta/src/dotfiles/youve_got_mail.sh "
+    ;;                              (number-to-string mu4e-update-interval)))))
+    ))
 
 ;; Jabber.el
 (add-hook 'jabber-chat-mode-hook 'flyspell-mode)
