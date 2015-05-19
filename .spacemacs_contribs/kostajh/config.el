@@ -9,8 +9,8 @@
   (interactive)
   (custom-persp "mu4e" (progn
                          (mu4e)
-                         (add-hook 'mu4e-compose-mode 'company-mode-on)
                          )))
+
 (evil-leader/set-key "Lom" 'custom-persp/mu4e)
 
 (defun custom-persp/ledger ()
@@ -96,17 +96,6 @@
 
 (add-hook 'magit-mode-hook #'kostajh/add-PR-fetch)
 
-(defun kostajh-org-clock-in ()
-  ;; Look up Harvest project from filename org task property
-  ;; (async-shell-command "hcl")
-  ;; (shell-command "notify-send 'org-mode' 'Clocked in'")
-  )
-
-(defun kostajh-org-clock-out ()
-  ;; (async-shell-command "hcl")
-  ;; (shell-command "notify-send 'org-mode' 'Clocked out'")
-  )
-
 (defun helm-harvest-search ()
   (defun slurp (f)
   (with-temp-buffer
@@ -153,17 +142,14 @@
           :prompt "Task: "
     :buffer "*helm-harvest*"))
 
-(add-hook 'org-clock-in-hook 'kostajh-org-clock-in)
-(add-hook 'org-clock-out-hook 'kostajh-org-clock-out)
-
 ;; Enable flycheck for the following modes
-(dolist (mode '(php
-                drupal
-                html
-                json
-                yaml))
-  (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
-            'flycheck-mode))
+;; (dolist (mode '(php
+;;                 drupal
+;;                 html
+;;                 json
+;;                 yaml))
+;;   (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
+;;             'flycheck-mode))
 
 ;; Org
 (setq org-src-fontify-natively t)
@@ -259,58 +245,112 @@
 
 ;; mu4e
 (eval-after-load 'mu4e
-'(progn
-    (setq
-     mu4e-maildir       "~/mail/fastmail"   ;; top-level Maildir
-        mu4e-sent-folder   "/INBOX.Sent Items"       ;; folder for sent messages
-        mu4e-drafts-folder "/INBOX.Drafts"     ;; unfinished messages
-        mu4e-trash-folder  "/INBOX.Trash"      ;; trashed messages
-        mu4e-refile-folder "/INBOX.Archive"   ;; saved messages
-        mu4e-get-mail-command "offlineimap -q"
-        mu4e-update-interval 900
-    )
+  '(progn
+     (setq
+      mu4e-maildir       "~/mail"   ;; top-level Maildir
+      mu4e-sent-folder   "/fastmail/INBOX.Sent Items"       ;; folder for sent messages
+      mu4e-drafts-folder "/fastmail/INBOX.Drafts"     ;; unfinished messages
+      mu4e-trash-folder  "/fastmail/INBOX.Trash"      ;; trashed messages
+      mu4e-refile-folder "/fastmail/INBOX.Archive"   ;; saved messages
+      mu4e-get-mail-command "offlineimap -q"
+      mu4e-update-interval nil
+      mu4e-compose-signature-auto-include t
+      )
+    (setq mu4e-user-mail-address-list (list "kosta@kostaharlan.net" "kosta@savaslabs.com" "kostajh@gmail.com" "kosta@embros.org" "kostaharlan@gmail.com"))
 
-    (defun no-auto-fill ()
-      "Turn off auto-fill-mode."
-      (auto-fill-mode -1))
+     (defun no-auto-fill ()
+       "Turn off auto-fill-mode."
+       (auto-fill-mode -1))
 
-    (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
+     (add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
 
-    (setq message-send-mail-function 'smtpmail-send-it)
-    (setq smtpmail-smtp-server "mail.messagingengine.com")
-    (setq smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
-    (setq smtpmail-default-smtp-server "mail.messagingengine.com")
-    (setq smtpmail-local-domain "kostaharlan.net")
-    (setq user-full-name "Kosta Harlan")
-    (setq user-mail-address "kosta@kostaharlan.net")
-    (setq gnutls-algorithm-priority "NORMAL:%COMPAT")
-    (setq smtpmail-stream-type 'ssl
-          smtpmail-smtp-service 465)
-    (setq mml2015-use 'epg)
-    (setq mu4e-attachment-dir  "~/Downloads")
-    (setq mu4e-maildir-shortcuts
-        '( ("/INBOX"     . ?i)
-           ("/INBOX.Archive"   . ?a)
-           ("/INBOX.Sent Items"      . ?s)))
+     (setq message-send-mail-function 'smtpmail-send-it)
+     (setq smtpmail-smtp-server "mail.messagingengine.com")
+     (setq smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
+     (setq smtpmail-default-smtp-server "mail.messagingengine.com")
+     (setq smtpmail-local-domain "kostaharlan.net")
+     (setq user-full-name "Kosta Harlan")
+     (setq user-mail-address "kosta@kostaharlan.net")
+     (setq gnutls-algorithm-priority "NORMAL:%COMPAT")
+     (setq smtpmail-stream-type 'ssl)
+     (setq smtpmail-smtp-service 465)
+     (setq mml2015-use 'epg)
+     (setq mu4e-attachment-dir  "~/Downloads")
+     (setq mu4e-maildir-shortcuts
+           '( ("/fastmail/INBOX"     . ?i)
+              ("/fastmail/INBOX.Archive"   . ?a)
+              ("/fastmail.Sent Items"      . ?e)
+              ("/savaslabs/INBOX"  . ?s)
+           ))
 
-    ;; enable inline images
-    (setq mu4e-view-show-images t)
-    ;; use imagemagick, if available
-    (when (fboundp 'imagemagick-register-types)
-      (imagemagick-register-types))
-    (require 'mu4e-contrib)
-    (setq mu4e-html2text-command 'mu4e-shr2text)
+     ;; enable inline images
+     (setq mu4e-view-show-images t)
+     ;; use imagemagick, if available
+     (when (fboundp 'imagemagick-register-types)
+       (imagemagick-register-types))
+     (require 'mu4e-contrib)
+     (setq mu4e-html2text-command 'mu4e-shr2text)
 
-    (setq message-kill-buffer-on-exit t)
+     (setq message-kill-buffer-on-exit t)
 
-    (add-to-list 'mu4e-bookmarks
-                 '("to:kosta@savaslabs.com"           "savas"          ?i) t)
+     (add-to-list 'mu4e-bookmarks
+                  '("to:kosta@savaslabs.com"           "savas"          ?i) t)
+     (defvar my-mu4e-account-alist
+       '(("fastmail"
+          (mu4e-sent-folder "/fastmail/INBOX.Sent Items")
+          (mu4e-drafts-folder "/fastmail/INBOX.Drafts")
+          (mu4e-trash-folder "/fastmail/INBOX.Trash")
+          (mu4e-refile-folder "/fastmail/INBOX.Archive")
+          (user-mail-address "kosta@kostaharlan.net")
+          (smtpmail-default-smtp-server "mail.messagingengine.com")
+          (smtpmail-local-domain "kostaharlan.net")
+          (smtpmail-smtp-user "kosta@fastmail.com")
+          (mu4e-compose-signature "kosta@kostaharlan.net")
+          (smtpmail-smtp-server "mail.messagingengine.com")
+          (smtpmail-stream-type ssl)
+          (smtpmail-smtp-service 465))
+         ("savaslabs"
+          (mu4e-sent-folder "/savaslabs/[Gmail].Sent Mail")
+          (mu4e-drafts-folder "/savaslabs/[Gmail].Drafts")
+          (mu4e-trash-folder "/savaslabs/[Gmail].Trash")
+          (mu4e-refile-folder "/savaslabs/[Gmail].All Mail")
+          (user-mail-address "kosta@savaslabs.com")
+          (smtpmail-default-smtp-server "smtp.gmail.com")
+          (smtpmail-local-domain "savaslabs.com")
+          (smtpmail-smtp-user "kosta@savaslabs.com")
+          (smtpmail-smtp-server "smtp.gmail.com")
+          (smtpmail-stream-type starttls)
+          (mu4e-compose-signature "Kosta Harlan\ndirector of technology\nhttp://savaslabs.com")
+          (smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
+          (user-mail-address "kosta@savaslabs.com")
+          (user-full-name "Kosta Harlan")
+          (smtpmail-smtp-service 587))))
 
-    ;; (add-hook 'mu4e-index-updated-hook
-    ;;     (lambda ()
-    ;;       (shell-command (concat "/home/kosta/src/dotfiles/youve_got_mail.sh "
-    ;;                              (number-to-string mu4e-update-interval)))))
-    ))
+     (defun my-mu4e-set-account ()
+       "Set the account for composing a message."
+       (let* ((account
+               (if mu4e-compose-parent-message
+                   (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                     (string-match "/\\(.*?\\)/" maildir)
+                     (match-string 1 maildir))
+                 (completing-read (format "Compose with account: (%s) "
+                                          (mapconcat #'(lambda (var) (car var))
+                                                     my-mu4e-account-alist "/"))
+                                  (mapcar #'(lambda (var) (car var)) my-mu4e-account-alist)
+                                  nil t nil nil (caar my-mu4e-account-alist))))
+              (account-vars (cdr (assoc account my-mu4e-account-alist))))
+         (if account-vars
+             (mapc #'(lambda (var)
+                       (set (car var) (cadr var)))
+                   account-vars)
+           (error "No email account found"))))
+
+     (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account 'company-mode-on)
+     ;; (add-hook 'mu4e-index-updated-hook
+     ;;     (lambda ()
+     ;;       (shell-command (concat "/home/kosta/src/dotfiles/youve_got_mail.sh "
+     ;;                              (number-to-string mu4e-update-interval)))))
+     ))
 
 ;; Jabber.el
 (add-hook 'jabber-chat-mode-hook 'flyspell-mode)
